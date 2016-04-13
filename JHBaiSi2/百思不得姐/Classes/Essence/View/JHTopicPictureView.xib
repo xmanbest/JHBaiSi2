@@ -94,7 +94,7 @@
                 <outlet property="picImageView" destination="Hh1-9q-CyM" id="AdR-zm-5eH"/>
                 <outlet property="progressView" destination="Wsf-eR-uZc" id="2he-Zb-bjJ"/>
             </connections>
-            <point key="canvasLocation" x="-62" y="342.5"/>
+            <point key="canvasLocation" x="-23" y="214.5"/>
         </view>
     </objects>
     <resources>

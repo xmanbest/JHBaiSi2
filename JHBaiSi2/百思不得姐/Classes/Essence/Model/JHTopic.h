@@ -10,6 +10,7 @@
 #import "JHTopicUser.h"
 #import "JHTopicImage.h"
 #import "JHTopicGif.h"
+#import "JHTopicAudio.h"
 
 // topic模型type属性的值
 UIKIT_EXTERN NSString * const JHTopicAudioKey;
@@ -49,6 +50,9 @@ UIKIT_EXTERN NSString * const JHTopicWordKey;
 @property(nonatomic, strong)JHTopicImage *image;
 @property(nonatomic, strong)JHTopicGif *gif;
 
+#pragma mark - 音频
+@property(nonatomic, strong)JHTopicAudio *audio;
+
 #pragma mark - 辅助属性
 /**
  * cell的高度
@@ -66,4 +70,10 @@ UIKIT_EXTERN NSString * const JHTopicWordKey;
  *  纪录已加载图片的进度
  */
 @property(nonatomic, assign)CGFloat downloadProgress;
+
+/**
+ *  cell音频视图的Frame
+ */
+@property(nonatomic, assign, readonly)CGRect audioViewFrame;
+
 @end

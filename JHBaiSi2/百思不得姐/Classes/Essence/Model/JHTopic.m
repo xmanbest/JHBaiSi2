@@ -78,7 +78,7 @@ NSString * const JHTopicWordKey = @"text";
     CGFloat cellH = JHIconH + JHBottomViewH + textH + 3*JHTopicMargin;
     
     // 图片topic相关
-    if ([self.type isEqualToString:@"image"] || [self.type isEqualToString:@"gif"]) {
+    if ([self.type isEqualToString:JHTopicImageKey] || [self.type isEqualToString:JHTopicGifKey]) {
         // 此处计算图片视图Frame并保存，以便后续使用
         CGFloat pX = JHTopicMargin;
         CGFloat pY = JHIconH + textH + 3*JHTopicMargin;
@@ -99,6 +99,17 @@ NSString * const JHTopicWordKey = @"text";
         
         // 图片视图高度
         cellH = cellH + pH + JHTopicMargin;
+    } // 音频topic相关
+    else if ([self.type isEqualToString:JHTopicAudioKey]) {
+        // 计算frame
+        CGFloat aX = JHTopicMargin;
+        CGFloat aY = JHIconH + textH + 3*JHTopicMargin;
+        CGFloat aW = size.width; // 最大宽度
+        CGFloat aH = (self.audio.height * aW) / self.audio.width;
+        _audioViewFrame = CGRectMake(aX, aY, aW, aH);
+        
+        // 高度叠加
+        cellH += aH + JHTopicMargin;
     }
     
     // cell的高度在setFrame方法中会减少10，所以此处提前增加10

@@ -10,6 +10,7 @@
 #import <UIImageView+WebCache.h>
 #import "JHTopicPictureView.h"
 #import <DALabeledCircularProgressView.h>
+#import "JHTopicAudioView.h"
 
 @interface JHTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -26,6 +27,10 @@
  *  显示图片的视图
  */
 @property (weak, nonatomic) JHTopicPictureView *picView;
+/**
+ *  音频的视图
+ */
+@property (weak, nonatomic) JHTopicAudioView *audiView;
 @end
 
 @implementation JHTopicCell
@@ -38,11 +43,21 @@
 - (JHTopicPictureView *)picView {
     if (!_picView) {
         JHTopicPictureView *picView = [JHTopicPictureView pictureView];
-        [self addSubview:picView];
+        [self.contentView addSubview:picView];
         
         _picView = picView;
     }
     return _picView;
+}
+
+- (JHTopicAudioView *)audiView {
+    if (!_audiView) {
+        JHTopicAudioView *audioView = [JHTopicAudioView audioView];
+        [self.contentView addSubview:audioView];
+        
+        _audiView = audioView;
+    }
+    return _audiView;
 }
 
 /**
@@ -68,19 +83,26 @@
     
     // 显示文本内容
     self.text_Label.text = topic.text;
-    
+    // 当cell被图片复用时
     if ([topic.type isEqualToString:JHTopicImageKey] || [topic.type isEqualToString:JHTopicGifKey]) {
         // 中部图片视图内部控件设置
         self.picView.topic = topic;
         // 设置图片视图Frame(此frame计算被封装到了数据模型中)
         self.picView.frame = topic.picViewFrame;
     }
+    // 当cell被音频复用时
+    else if ([topic.type isEqualToString:JHTopicAudioKey]) {
+        self.audiView.topic = topic;
+        self.audiView.frame = topic.audioViewFrame;
+    }
     // 当cell被段子复用时，应该清除中间控件
     else {
+        [self.picView removeFromSuperview];
+        [self.audiView removeFromSuperview];
         // 中部图片视图内部控件设置
-        self.picView.topic = topic;
+//        self.picView.topic = topic;
         // 设置图片视图Frame(此frame计算被封装到了数据模型中)
-        self.picView.frame = topic.picViewFrame;
+//        self.picView.frame = topic.picViewFrame;
     }
     
 }

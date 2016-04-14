@@ -52,6 +52,10 @@
 
 @implementation JHTopicCell
 
++ (instancetype)topicCell {
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] lastObject];
+}
+
 - (void)awakeFromNib {
     // 设置立体边框背景图
     self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainCellBackground"]];
@@ -173,10 +177,10 @@
  *  修改cell默认frame
  */
 - (void)setFrame:(CGRect)frame {
-    
+//    JHLog(@"frame:%@", NSStringFromCGRect(frame));
 //    frame.origin.x = margin;
 //    frame.size.width -= 2 * self.x;
-    frame.size.height -= JHTopicMargin;
+    frame.size.height = self.topic.cellH - JHTopicMargin;
     frame.origin.y += JHTopicMargin;
     
     [super setFrame:frame];

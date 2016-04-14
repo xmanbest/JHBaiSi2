@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHTopic;
 
 @interface JHTopicCommentViewController : UIViewController
-
+/**
+ *  头部视图数据模型
+ */
+@property(strong, nonatomic) JHTopic *topic;
 @end

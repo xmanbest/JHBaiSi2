@@ -11,4 +11,6 @@
 
 @interface JHTopicCell : UITableViewCell
 @property(nonatomic, strong)JHTopic *topic;
+
++ (instancetype)topicCell;
 @end

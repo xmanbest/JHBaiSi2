@@ -7,9 +7,11 @@
 //
 
 #import "JHTopicCommentViewController.h"
+#import "JHTopicCell.h"
 
 @interface JHTopicCommentViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputToViewBottomSpace;
+@property (weak, nonatomic) IBOutlet UITableView *commentTableVIew;
 
 @end
 
@@ -17,9 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 基本设置
+    [self setup];
+    // tableView设置
+    [self setupTableView];
     
-    // 注册键盘通知观察者
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+
     
     // 获取评论 api
     // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=18041737&device=ios%20device&from=ios&hot=1&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1
@@ -27,6 +32,32 @@
     // 获取点赞用户list api
     // http://api.budejie.com/api/api_open.php?a=praise&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&device=ios%20device&from=ios&id=17979407&jbk=0&mac=&market=&maxtime=0&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&per=5&sex=m&udid=&ver=4.1
 }
+
+/**
+ *  基本设置
+ */
+- (void)setup {
+    // 设置背景色
+    self.commentTableVIew.backgroundColor = JHGlobalBackColore;
+    
+    // 注册键盘通知观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+/**
+ *  tableView设置
+ */
+- (void)setupTableView {
+    // 设置tableView顶部缩进
+    self.commentTableVIew.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    
+    // 设置tableViewHeader显示视图
+    JHTopicCell *headerView = [JHTopicCell topicCell];
+    headerView.topic = self.topic;
+    headerView.height = self.topic.cellH;
+    self.commentTableVIew.tableHeaderView = headerView;
+}
+
 
 /**
  *  键盘Frame变化通知处理方法
@@ -55,12 +86,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     
+    cell.textLabel.text = [NSString stringWithFormat:@"row:%zd", indexPath.row];
     
     return cell;
 }

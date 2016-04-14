@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JHTopicCommentViewController">
             <connections>
+                <outlet property="commentTableVIew" destination="VPY-ig-DBu" id="Oi1-ah-sti"/>
                 <outlet property="inputToViewBottomSpace" destination="6OG-hV-qYc" id="gkz-fb-rJw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -76,13 +77,13 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VPY-ig-DBu" userLabel="评论内容">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="pKv-D9-e1Z"/>
                         <outlet property="delegate" destination="-1" id="8et-6s-QnY"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="dqH-Nh-fxT" secondAttribute="bottom" id="6OG-hV-qYc"/>
                 <constraint firstAttribute="trailing" secondItem="dqH-Nh-fxT" secondAttribute="trailing" id="BZE-KX-Y1E"/>

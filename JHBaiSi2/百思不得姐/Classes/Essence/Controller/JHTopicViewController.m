@@ -13,6 +13,7 @@
 #import <MJRefresh.h>
 #import "JHTopic.h"
 #import "JHTopicCell.h"
+#import "JHTopicCommentViewController.h"
 
 static NSString * const JHTopicCellID = @"topic";
 
@@ -155,6 +156,10 @@ static NSString * const JHTopicCellID = @"topic";
     return topic.cellH;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    JHTopicCommentViewController *commentVC = [[JHTopicCommentViewController alloc] init];
+    [self.navigationController pushViewController:commentVC animated:YES];
+}
 
 #pragma mark - Discard
 - (void)getPlistFromResponse:(id)responseObject {

@@ -13,6 +13,7 @@
 #import "JHTopicAudioView.h"
 #import "JHTopicVideoView.h"
 #import "JHTopicComment.h"
+#import "JHTopicCommentViewController.h"
 
 @interface JHTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -185,11 +186,9 @@
  *  评论按钮点击处理方法
  */
 - (IBAction)commentBtnClick:(id)sender {
-    // 获取评论 api
-    // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=17979407&device=ios%20device&from=ios&hot=1&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1
+//    JHTopicCommentViewController *commentVC = [[JHTopicCommentViewController alloc] init];
     
-    // 获取点赞用户list api
-    // http://api.budejie.com/api/api_open.php?a=praise&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&device=ios%20device&from=ios&id=17979407&jbk=0&mac=&market=&maxtime=0&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&per=5&sex=m&udid=&ver=4.1
+    
 }
 
 @end

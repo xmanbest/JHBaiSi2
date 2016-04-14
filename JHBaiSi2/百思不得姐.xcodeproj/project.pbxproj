@@ -41,6 +41,8 @@
 		51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C811CBF0DC80073273A /* JHTopicVideoView.xib */; };
 		51A91C851CBF107A0073273A /* JHTopicVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C841CBF107A0073273A /* JHTopicVideo.m */; };
 		51A91C881CBF288A0073273A /* JHTopicComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C871CBF288A0073273A /* JHTopicComment.m */; };
+		51A91C8C1CBFB99E0073273A /* JHTopicCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C8A1CBFB99E0073273A /* JHTopicCommentViewController.m */; };
+		51A91C8D1CBFB99E0073273A /* JHTopicCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C8B1CBFB99E0073273A /* JHTopicCommentViewController.xib */; };
 		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
 		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
@@ -133,6 +135,9 @@
 		51A91C841CBF107A0073273A /* JHTopicVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicVideo.m; sourceTree = "<group>"; };
 		51A91C861CBF288A0073273A /* JHTopicComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicComment.h; sourceTree = "<group>"; };
 		51A91C871CBF288A0073273A /* JHTopicComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicComment.m; sourceTree = "<group>"; };
+		51A91C891CBFB99E0073273A /* JHTopicCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicCommentViewController.h; sourceTree = "<group>"; };
+		51A91C8A1CBFB99E0073273A /* JHTopicCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicCommentViewController.m; sourceTree = "<group>"; };
+		51A91C8B1CBFB99E0073273A /* JHTopicCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicCommentViewController.xib; sourceTree = "<group>"; };
 		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
 		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
 		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
@@ -275,6 +280,9 @@
 				5137516F1CA4263200902C97 /* JHEssenceViewController.m */,
 				51EECFE21CB52B7600677631 /* JHTopicViewController.h */,
 				51EECFE31CB52B7600677631 /* JHTopicViewController.m */,
+				51A91C891CBFB99E0073273A /* JHTopicCommentViewController.h */,
+				51A91C8A1CBFB99E0073273A /* JHTopicCommentViewController.m */,
+				51A91C8B1CBFB99E0073273A /* JHTopicCommentViewController.xib */,
 				512D78781CAA76690032CE49 /* JHRecommendTagViewController.h */,
 				512D78791CAA76690032CE49 /* JHRecommendTagViewController.m */,
 				51EECFF41CBB5B1200677631 /* JHShowBigPicViewController.h */,
@@ -613,6 +621,7 @@
 				5102BD681CB39A9B0078D26B /* JHTopicCell.xib in Resources */,
 				51F2B8F81CABAEDC0096A3E0 /* JHLoginRegisterViewController.xib in Resources */,
 				513751AA1CA639C800902C97 /* JHRecommendViewController.xib in Resources */,
+				51A91C8D1CBFB99E0073273A /* JHTopicCommentViewController.xib in Resources */,
 				513751A31CA5450700902C97 /* JHFriendTrendsViewController.xib in Resources */,
 				513751461CA37A0A00902C97 /* Main.storyboard in Resources */,
 				51A91C7D1CBE28160073273A /* JHTopicAudioView.xib in Resources */,
@@ -690,6 +699,7 @@
 				513751951CA4263200902C97 /* JHEssenceViewController.m in Sources */,
 				5102BD671CB39A9B0078D26B /* JHTopicCell.m in Sources */,
 				51F2B9121CAE3BA40096A3E0 /* JHAudioTableViewController.m in Sources */,
+				51A91C8C1CBFB99E0073273A /* JHTopicCommentViewController.m in Sources */,
 				51EECFEE1CB640A400677631 /* JHTopicPictureView.m in Sources */,
 				51A91C851CBF107A0073273A /* JHTopicVideo.m in Sources */,
 				51F1945E1CAA9EA400B254EF /* JHRecommendTag.m in Sources */,

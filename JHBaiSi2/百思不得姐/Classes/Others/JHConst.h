@@ -12,3 +12,6 @@ UIKIT_EXTERN CGFloat const JHBottomViewH;
 UIKIT_EXTERN CGFloat const JHTopicPictureHLimit;
 // pictureTopic视图超过极限高度后被改为的默认高度
 UIKIT_EXTERN CGFloat const JHTopicPictureHDefault;
+
+// TopicCell中最热评论标题的高度
+UIKIT_EXTERN CGFloat const JHTopicTopCommentTitleH;

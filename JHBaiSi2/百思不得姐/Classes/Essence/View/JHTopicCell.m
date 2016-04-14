@@ -12,6 +12,7 @@
 #import <DALabeledCircularProgressView.h>
 #import "JHTopicAudioView.h"
 #import "JHTopicVideoView.h"
+#import "JHTopicComment.h"
 
 @interface JHTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -36,6 +37,16 @@
  *  视频的视图
  */
 @property (weak, nonatomic) JHTopicVideoView *videoView;
+
+/**
+ *  最热评论视图
+ */
+@property (weak, nonatomic) IBOutlet UIView *topCommentView;
+/**
+ *  最热评论内容
+ */
+@property (weak, nonatomic) IBOutlet UILabel *topCommentContentLabel;
+
 @end
 
 @implementation JHTopicCell
@@ -85,7 +96,6 @@
     
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:[topic.u.header firstObject]] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
  
-    
     // 设置格式化后的经过时间
     self.timeLabel.text = topic.passtime;
     // 判断是否显示sinaV
@@ -98,6 +108,7 @@
     
     // 显示文本内容
     self.text_Label.text = topic.text;
+    
     // 当cell被图片复用时
     if ([topic.type isEqualToString:JHTopicImageKey] || [topic.type isEqualToString:JHTopicGifKey]) {
         // 中部图片视图内部控件设置
@@ -120,12 +131,24 @@
         [self.picView removeFromSuperview];
         [self.audiView removeFromSuperview];
         [self.videoView removeFromSuperview];
-        // 中部图片视图内部控件设置
-//        self.picView.topic = topic;
-        // 设置图片视图Frame(此frame计算被封装到了数据模型中)
-//        self.picView.frame = topic.picViewFrame;
     }
     
+    // 最热评论
+    if (topic.top_comment) { // 有最热评论
+        self.topCommentView.hidden = NO;
+//        NSString *text = [NSString stringWithFormat:@"%@：%@", topic.top_comment.u.name, topic.top_comment.content];
+//        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//        paragraphStyle.minimumLineHeight = 20;
+//        self.topCommentContentLabel.attributedText = [[NSAttributedString alloc] initWithString:text
+//                                                                                     attributes:@{
+//                                                                                                  NSFontAttributeName : [UIFont systemFontOfSize:13],
+//                                                                                                  NSParagraphStyleAttributeName : paragraphStyle
+//                                                                                                  }];
+        self.topCommentContentLabel.text = [NSString stringWithFormat:@"%@：%@", topic.top_comment.u.name, topic.top_comment.content];
+    }
+    else { // 没有最热评论
+        self.topCommentView.hidden = YES;
+    }
 }
 
 /**
@@ -158,5 +181,15 @@
     [super setFrame:frame];
 }
 
+/**
+ *  评论按钮点击处理方法
+ */
+- (IBAction)commentBtnClick:(id)sender {
+    // 获取评论 api
+    // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=17979407&device=ios%20device&from=ios&hot=1&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1
+    
+    // 获取点赞用户list api
+    // http://api.budejie.com/api/api_open.php?a=praise&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&device=ios%20device&from=ios&id=17979407&jbk=0&mac=&market=&maxtime=0&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&per=5&sex=m&udid=&ver=4.1
+}
 
 @end

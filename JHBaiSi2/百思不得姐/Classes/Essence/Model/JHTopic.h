@@ -12,6 +12,7 @@
 #import "JHTopicGif.h"
 #import "JHTopicAudio.h"
 #import "JHTopicVideo.h"
+@class JHTopicComment;
 
 // topic模型type属性的值
 UIKIT_EXTERN NSString * const JHTopicAudioKey;
@@ -46,6 +47,10 @@ UIKIT_EXTERN NSString * const JHTopicWordKey;
  *  topic类型
  */
 @property(nonatomic, copy)NSString *type;
+/**
+ *  最热评论
+ */
+@property(nonatomic, strong) JHTopicComment *top_comment;
 
 #pragma mark - 图片
 @property(nonatomic, strong)JHTopicImage *image;

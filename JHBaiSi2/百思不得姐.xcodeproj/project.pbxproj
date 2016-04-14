@@ -40,6 +40,7 @@
 		51A91C801CBF0DAE0073273A /* JHTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C7F1CBF0DAE0073273A /* JHTopicVideoView.m */; };
 		51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C811CBF0DC80073273A /* JHTopicVideoView.xib */; };
 		51A91C851CBF107A0073273A /* JHTopicVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C841CBF107A0073273A /* JHTopicVideo.m */; };
+		51A91C881CBF288A0073273A /* JHTopicComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C871CBF288A0073273A /* JHTopicComment.m */; };
 		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
 		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
@@ -130,6 +131,8 @@
 		51A91C811CBF0DC80073273A /* JHTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicVideoView.xib; sourceTree = "<group>"; };
 		51A91C831CBF107A0073273A /* JHTopicVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicVideo.h; sourceTree = "<group>"; };
 		51A91C841CBF107A0073273A /* JHTopicVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicVideo.m; sourceTree = "<group>"; };
+		51A91C861CBF288A0073273A /* JHTopicComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicComment.h; sourceTree = "<group>"; };
+		51A91C871CBF288A0073273A /* JHTopicComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicComment.m; sourceTree = "<group>"; };
 		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
 		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
 		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				51F1945D1CAA9EA400B254EF /* JHRecommendTag.m */,
 				51F2B9161CAFA0DE0096A3E0 /* JHTopic.h */,
 				51F2B9171CAFA0DE0096A3E0 /* JHTopic.m */,
+				51A91C861CBF288A0073273A /* JHTopicComment.h */,
+				51A91C871CBF288A0073273A /* JHTopicComment.m */,
 				51F2B9191CAFA3830096A3E0 /* JHTopicUser.h */,
 				51F2B91A1CAFA3830096A3E0 /* JHTopicUser.m */,
 				51EECFE61CB5FD7B00677631 /* JHTopicImage.h */,
@@ -713,6 +718,7 @@
 				51F2B9011CAD22690096A3E0 /* JHOneTimeLaunchView.m in Sources */,
 				513751991CA4263200902C97 /* AppDelegate.m in Sources */,
 				513751A81CA6354000902C97 /* Foundation+Log.m in Sources */,
+				51A91C881CBF288A0073273A /* JHTopicComment.m in Sources */,
 				51F2B9151CAE49780096A3E0 /* JHEssenceBaseTableViewController.m in Sources */,
 				5137519D1CA4263200902C97 /* main.m in Sources */,
 				513751AD1CA6407600902C97 /* JHRecommendCategory.m in Sources */,

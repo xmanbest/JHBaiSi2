@@ -7,6 +7,7 @@
 //
 
 #import "JHTopic.h"
+#import "JHTopicComment.h"
 
 // topic模型type属性的值
 NSString * const JHTopicAudioKey = @"audio";
@@ -73,6 +74,7 @@ NSString * const JHTopicWordKey = @"text";
     // cell高度
     CGFloat cellH = JHIconH + JHBottomViewH + textH + 3*JHTopicMargin;
     
+    // 中间多媒体显示控件高度
     // 图片topic相关
     if ([self.type isEqualToString:JHTopicImageKey] || [self.type isEqualToString:JHTopicGifKey]) {
         // 此处计算图片视图Frame并保存，以便后续使用
@@ -117,6 +119,28 @@ NSString * const JHTopicWordKey = @"text";
         
         // 高度叠加
         cellH += vH + JHTopicMargin;
+    }
+    
+    // 最热评论高度
+    if (self.top_comment) {
+//        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//        paragraphStyle.minimumLineHeight = 20;
+//        CGFloat topCommentContentH = [self.top_comment.content boundingRectWithSize:size
+//                                                                            options:NSStringDrawingUsesLineFragmentOrigin
+//                                                                         attributes:@{
+//                                                                                      NSFontAttributeName : [UIFont systemFontOfSize:13],
+//                                                                                      NSParagraphStyleAttributeName : paragraphStyle
+//                                                                                      }
+//                                                                            context:nil].size.height;
+    CGFloat topCommentContentH = [[NSString stringWithFormat:@"%@：%@", self.top_comment.u.name, self.top_comment.content]
+                                                                   boundingRectWithSize:size
+                                                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                                                             attributes:@{
+                                                                                        NSFontAttributeName : [UIFont systemFontOfSize:13]
+                                                                                        }
+                                                                                context:nil].size.height;
+        
+        cellH += JHTopicTopCommentTitleH + topCommentContentH + JHTopicMargin;
     }
     
     // cell的高度在setFrame方法中会减少10，所以此处提前增加10

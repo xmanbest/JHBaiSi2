@@ -37,6 +37,9 @@
 		51A91C781CBE25360073273A /* JHTopicAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C771CBE25360073273A /* JHTopicAudio.m */; };
 		51A91C7B1CBE27F80073273A /* JHTopicAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C7A1CBE27F80073273A /* JHTopicAudioView.m */; };
 		51A91C7D1CBE28160073273A /* JHTopicAudioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C7C1CBE28160073273A /* JHTopicAudioView.xib */; };
+		51A91C801CBF0DAE0073273A /* JHTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C7F1CBF0DAE0073273A /* JHTopicVideoView.m */; };
+		51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C811CBF0DC80073273A /* JHTopicVideoView.xib */; };
+		51A91C851CBF107A0073273A /* JHTopicVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C841CBF107A0073273A /* JHTopicVideo.m */; };
 		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
 		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
@@ -122,6 +125,11 @@
 		51A91C791CBE27F80073273A /* JHTopicAudioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicAudioView.h; sourceTree = "<group>"; };
 		51A91C7A1CBE27F80073273A /* JHTopicAudioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicAudioView.m; sourceTree = "<group>"; };
 		51A91C7C1CBE28160073273A /* JHTopicAudioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicAudioView.xib; sourceTree = "<group>"; };
+		51A91C7E1CBF0DAE0073273A /* JHTopicVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicVideoView.h; sourceTree = "<group>"; };
+		51A91C7F1CBF0DAE0073273A /* JHTopicVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicVideoView.m; sourceTree = "<group>"; };
+		51A91C811CBF0DC80073273A /* JHTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicVideoView.xib; sourceTree = "<group>"; };
+		51A91C831CBF107A0073273A /* JHTopicVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicVideo.h; sourceTree = "<group>"; };
+		51A91C841CBF107A0073273A /* JHTopicVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicVideo.m; sourceTree = "<group>"; };
 		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
 		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
 		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
@@ -288,6 +296,8 @@
 				51EECFEA1CB5FE0100677631 /* JHTopicGif.m */,
 				51A91C761CBE25360073273A /* JHTopicAudio.h */,
 				51A91C771CBE25360073273A /* JHTopicAudio.m */,
+				51A91C831CBF107A0073273A /* JHTopicVideo.h */,
+				51A91C841CBF107A0073273A /* JHTopicVideo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +317,9 @@
 				51A91C791CBE27F80073273A /* JHTopicAudioView.h */,
 				51A91C7A1CBE27F80073273A /* JHTopicAudioView.m */,
 				51A91C7C1CBE28160073273A /* JHTopicAudioView.xib */,
+				51A91C7E1CBF0DAE0073273A /* JHTopicVideoView.h */,
+				51A91C7F1CBF0DAE0073273A /* JHTopicVideoView.m */,
+				51A91C811CBF0DC80073273A /* JHTopicVideoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -588,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				512D78771CA8D0E80032CE49 /* JHRecommedUserCell.xib in Resources */,
+				51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */,
 				513751481CA37A0A00902C97 /* Assets.xcassets in Resources */,
 				51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */,
 				513751B21CA6472C00902C97 /* JHRecommendCategoryTableViewCell.xib in Resources */,
@@ -672,6 +686,7 @@
 				5102BD671CB39A9B0078D26B /* JHTopicCell.m in Sources */,
 				51F2B9121CAE3BA40096A3E0 /* JHAudioTableViewController.m in Sources */,
 				51EECFEE1CB640A400677631 /* JHTopicPictureView.m in Sources */,
+				51A91C851CBF107A0073273A /* JHTopicVideo.m in Sources */,
 				51F1945E1CAA9EA400B254EF /* JHRecommendTag.m in Sources */,
 				51F2B90C1CAE3B360096A3E0 /* JHPictureTableViewController.m in Sources */,
 				51A91C7B1CBE27F80073273A /* JHTopicAudioView.m in Sources */,
@@ -693,6 +708,7 @@
 				5137519A1CA4263200902C97 /* UIBarButtonItem+JHExtention.m in Sources */,
 				513751B11CA6472C00902C97 /* JHRecommendCategoryTableViewCell.m in Sources */,
 				51EECFE41CB52B7600677631 /* JHTopicViewController.m in Sources */,
+				51A91C801CBF0DAE0073273A /* JHTopicVideoView.m in Sources */,
 				513751981CA4263200902C97 /* JHNewViewController.m in Sources */,
 				51F2B9011CAD22690096A3E0 /* JHOneTimeLaunchView.m in Sources */,
 				513751991CA4263200902C97 /* AppDelegate.m in Sources */,

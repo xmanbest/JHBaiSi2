@@ -30,7 +30,7 @@
     // 取消autoresizeing对Frame的干扰
     self.autoresizingMask = UIViewAutoresizingNone;
     // 设置图片点击手势识别
-    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picImageViewClick)]];
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClick)]];
 }
 
 - (void)setTopic:(JHTopic *)topic {
@@ -94,7 +94,7 @@
 /**
  *  图片点击手势响应方法
  */
-- (void)picImageViewClick {
+- (void)imageViewClick {
     // 模态视图显示放大图片
     JHShowBigPicViewController *vc = [[JHShowBigPicViewController alloc] init];
     vc.topic = self.topic;

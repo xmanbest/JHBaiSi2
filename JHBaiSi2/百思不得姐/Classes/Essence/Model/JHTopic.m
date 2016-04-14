@@ -7,8 +7,6 @@
 //
 
 #import "JHTopic.h"
-#import "JHTopicPictureView.h"
-
 
 // topic模型type属性的值
 NSString * const JHTopicAudioKey = @"audio";
@@ -18,9 +16,7 @@ NSString * const JHTopicImageKey = @"image";
 NSString * const JHTopicWordKey = @"text";
 
 @interface JHTopic ()
-{
-    CGRect _picViewFrame;
-}
+
 @end
 
 @implementation JHTopic
@@ -110,6 +106,17 @@ NSString * const JHTopicWordKey = @"text";
         
         // 高度叠加
         cellH += aH + JHTopicMargin;
+    } // 视频topic相关
+    else if ([self.type isEqualToString:JHTopicVideoKey]) {
+        // 计算frame
+        CGFloat vX = JHTopicMargin;
+        CGFloat vY = JHIconH + textH + 3*JHTopicMargin;
+        CGFloat vW = size.width; // 最大宽度
+        CGFloat vH = (self.video.height * vW) / self.video.width;
+        _videoViewFrame = CGRectMake(vX, vY, vW, vH);
+        
+        // 高度叠加
+        cellH += vH + JHTopicMargin;
     }
     
     // cell的高度在setFrame方法中会减少10，所以此处提前增加10

@@ -44,16 +44,43 @@
  */
 - (void)setupBigImageView {
     JHTopic *topic = self.topic;
-    BOOL isImage = [topic.type isEqualToString:JHTopicImageKey];
     
-    // 大图片的url
-    NSURL *bigUrl = isImage ? [topic.image.big firstObject] : [topic.gif.images firstObject];
+    // 图片的url
+    NSURL *url = nil;
+    // 设置imageView的Frame
+    CGFloat height = 0;
+    CGFloat width = 0;
+    
+    // 当图片时
+    if ([topic.type isEqualToString:JHTopicImageKey]) {
+        url = [topic.image.big firstObject];
+        height = topic.image.height;
+        width = topic.image.width;
+    }
+    // 当GIF时
+    else if ([topic.type isEqualToString:JHTopicGifKey]) {
+        url = [topic.gif.images firstObject];
+        height = topic.gif.height;
+        width = topic.gif.width;
+    }
+    // 当音频时
+    else if ([topic.type isEqualToString:JHTopicAudioKey]) {
+        url = [topic.audio.thumbnail firstObject];
+        height = topic.audio.height;
+        width = topic.audio.width;
+    }
+    // 当视频时
+    else if ([topic.type isEqualToString:JHTopicVideoKey]) {
+        url = [topic.video.thumbnail firstObject];
+        height = topic.video.height;
+        width = topic.video.width;
+    }
     
     // (1)确保环形进度条实时显示下载进度，刚进入画面需要从数据模型中提取已下载的进度
     [self.progressView setProgress:topic.downloadProgress animated:NO];
     
     // 下载图片并显示环形进度条(对同一份url，SDImage会共享下载进度)
-    [self.bigImageView sd_setImageWithURL:bigUrl placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [self.bigImageView sd_setImageWithURL:url placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         [self.progressView setProgress:(1.0 * receivedSize / expectedSize) animated:NO];
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
@@ -61,10 +88,7 @@
     
     // 设置imageView的Frame
     CGFloat bigW = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = isImage ? topic.image.height : topic.gif.height;
-    CGFloat width = isImage ? topic.image.width : topic.gif.width;
     CGFloat bigH = bigW * height / width;
-    
     self.bigImageView.size = CGSizeMake(bigW, bigH);
     if (bigH > [UIScreen mainScreen].bounds.size.height) { // 当bigH超过屏幕高度
         // 扩张scrollView的contentSize

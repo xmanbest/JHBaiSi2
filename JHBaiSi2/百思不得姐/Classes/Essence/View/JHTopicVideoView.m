@@ -1,23 +1,25 @@
 //
-//  JHTopicAudioView.m
+//  JHTopicVideoView.m
 //  百思不得姐
 //
-//  Created by 李建華 on 16/4/13.
+//  Created by 李建華 on 16/4/14.
 //  Copyright © 2016年 lijianhua. All rights reserved.
 //
 
-#import "JHTopicAudioView.h"
+#import "JHTopicVideoView.h"
+#import "JHTopic.h"
 #import <UIImageView+WebCache.h>
 #import "JHShowBigPicViewController.h"
 
-@interface JHTopicAudioView ()
-@property (weak, nonatomic) IBOutlet UIImageView *audioImageView;
+@interface JHTopicVideoView ()
+@property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+
 @end
 
-@implementation JHTopicAudioView
-+ (instancetype)audioView {
+@implementation JHTopicVideoView
++ (instancetype)videoView {
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] lastObject];
 }
 
@@ -31,9 +33,9 @@
 - (void)setTopic:(JHTopic *)topic {
     _topic = topic;
     
-    [self.audioImageView sd_setImageWithURL:[topic.audio.thumbnail firstObject]];
-    self.playcountLabel.text = [NSString stringWithFormat:@"%zd播放", topic.audio.playcount];
-    NSInteger second = topic.audio.duration;
+    [self.videoImageView sd_setImageWithURL:[topic.video.thumbnail firstObject]];
+    self.playcountLabel.text = [NSString stringWithFormat:@"%zd播放", topic.video.playcount];
+    NSInteger second = topic.video.duration;
     NSInteger minute = second / 60;
     second = second % 60;
     self.durationLabel.text = [NSString stringWithFormat:@"%02zd:%02zd", minute, second];

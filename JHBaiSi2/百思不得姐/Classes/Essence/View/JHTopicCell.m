@@ -11,6 +11,7 @@
 #import "JHTopicPictureView.h"
 #import <DALabeledCircularProgressView.h>
 #import "JHTopicAudioView.h"
+#import "JHTopicVideoView.h"
 
 @interface JHTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
@@ -31,6 +32,10 @@
  *  音频的视图
  */
 @property (weak, nonatomic) JHTopicAudioView *audiView;
+/**
+ *  视频的视图
+ */
+@property (weak, nonatomic) JHTopicVideoView *videoView;
 @end
 
 @implementation JHTopicCell
@@ -58,6 +63,16 @@
         _audiView = audioView;
     }
     return _audiView;
+}
+
+- (JHTopicVideoView *)videoView {
+    if (!_videoView) {
+        JHTopicVideoView *videoView = [JHTopicVideoView videoView];
+        [self.contentView addSubview:videoView];
+        
+        _videoView = videoView;
+    }
+    return _videoView;
 }
 
 /**
@@ -95,10 +110,16 @@
         self.audiView.topic = topic;
         self.audiView.frame = topic.audioViewFrame;
     }
+    // 当cell被视频复用时
+    else if ([topic.type isEqualToString:JHTopicVideoKey]) {
+        self.videoView.topic = topic;
+        self.videoView.frame = topic.videoViewFrame;
+    }
     // 当cell被段子复用时，应该清除中间控件
     else {
         [self.picView removeFromSuperview];
         [self.audiView removeFromSuperview];
+        [self.videoView removeFromSuperview];
         // 中部图片视图内部控件设置
 //        self.picView.topic = topic;
         // 设置图片视图Frame(此frame计算被封装到了数据模型中)

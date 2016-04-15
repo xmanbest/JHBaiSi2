@@ -37,6 +37,8 @@
  *  基本设置
  */
 - (void)setup {
+    self.navigationItem.title = @"评论";
+    
     // 设置背景色
     self.commentTableVIew.backgroundColor = JHGlobalBackColore;
     
@@ -51,9 +53,14 @@
     // 设置tableView顶部缩进
     self.commentTableVIew.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
-    // 设置tableViewHeader显示视图
-    JHTopicCell *headerView = [JHTopicCell topicCell];
-    headerView.topic = self.topic;
+    // 设置tableViewHeader显示视图(中间间隔一个View可以屏蔽header对cellframe的隐式修改)
+    UIView *headerView = [[UIView alloc] init];
+    
+    JHTopicCell *cell = [JHTopicCell topicCell];
+    cell.topic = self.topic;
+    cell.size = CGSizeMake(JHScreenW, self.topic.cellH);
+    [headerView addSubview:cell];
+    
     headerView.height = self.topic.cellH;
     self.commentTableVIew.tableHeaderView = headerView;
 }
@@ -95,6 +102,10 @@
     cell.textLabel.text = [NSString stringWithFormat:@"row:%zd", indexPath.row];
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"%zd", section];
 }
 
 #pragma mark - UITableViewDelegate

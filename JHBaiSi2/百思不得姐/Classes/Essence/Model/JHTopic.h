@@ -24,6 +24,10 @@ UIKIT_EXTERN NSString * const JHTopicWordKey;
 @interface JHTopic : NSObject
 #pragma mark - 通用
 /**
+ *  TopicId
+ */
+@property(nonatomic, copy) NSString *ID;
+/**
  *  用户相关
  */
 @property(nonatomic, strong)JHTopicUser *u;

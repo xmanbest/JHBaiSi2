@@ -8,6 +8,7 @@
 
 #import "JHTopic.h"
 #import "JHTopicComment.h"
+#import <MJExtension.h>
 
 // topic模型type属性的值
 NSString * const JHTopicAudioKey = @"audio";
@@ -21,6 +22,12 @@ NSString * const JHTopicWordKey = @"text";
 @end
 
 @implementation JHTopic
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{
+             @"ID" : @"id"
+             };
+}
+
 /**
  *  返回格式化的日期
  */

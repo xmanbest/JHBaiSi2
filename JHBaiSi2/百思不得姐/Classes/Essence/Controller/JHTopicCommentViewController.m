@@ -8,11 +8,22 @@
 
 #import "JHTopicCommentViewController.h"
 #import "JHTopicCell.h"
+#import "JHTopicComment.h"
+#import <AFNetworking.h>
+#import <MJRefresh.h>
+#import <MJExtension.h>
 
 @interface JHTopicCommentViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputToViewBottomSpace;
 @property (weak, nonatomic) IBOutlet UITableView *commentTableVIew;
-
+/**
+ *  最热评论
+ */
+@property (strong, nonatomic) NSArray *hotComments;
+/**
+ *  最新评论
+ */
+@property (strong, nonatomic) NSMutableArray *lastestComments;
 @end
 
 @implementation JHTopicCommentViewController
@@ -23,14 +34,15 @@
     [self setup];
     // tableView设置
     [self setupTableView];
-    
+    // 添加顶部下拉刷新控件
+    [self setupHeadRefresh];
 
-    
     // 获取评论 api
     // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=18041737&device=ios%20device&from=ios&hot=1&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1
     
     // 获取点赞用户list api
     // http://api.budejie.com/api/api_open.php?a=praise&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&device=ios%20device&from=ios&id=17979407&jbk=0&mac=&market=&maxtime=0&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&per=5&sex=m&udid=&ver=4.1
+    
 }
 
 /**
@@ -65,6 +77,43 @@
     self.commentTableVIew.tableHeaderView = headerView;
 }
 
+/**
+ *  添加顶部下拉刷新控件
+ */
+- (void)setupHeadRefresh {
+    // 添加控件
+    self.commentTableVIew.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerDownRefresh)];
+    // 自动淡化
+    self.commentTableVIew.mj_header.automaticallyChangeAlpha = YES;
+    // 下拉刷新
+    [self.commentTableVIew.mj_header beginRefreshing];
+}
+/**
+ *  顶部下拉刷新处理方法
+ */
+- (void)headerDownRefresh {
+    // 网络请求评论数据
+    NSString *urlStr = @"http://api.budejie.com/api/api_open.php?appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&client=iphone&device=ios%20device&from=ios&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"dataList";
+    params[@"c"] = @"comment";
+    params[@"data_id"] = self.topic.ID;
+    params[@"hot"] = @"1";
+    [[AFHTTPSessionManager manager] GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSDictionary *dict = (NSDictionary *)responseObject;
+//        [dict writeToFile:@"/Users/lijianhua/Desktop/topicComment.plist" atomically:YES];
+        // 保存数据到数据模型
+        self.hotComments = [JHTopicComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
+        self.lastestComments = [JHTopicComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        // 刷新内容tableView
+        [self.commentTableVIew reloadData];
+        // 结束顶部刷新状态
+        [self.commentTableVIew.mj_header endRefreshing];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 结束顶部刷新状态
+        [self.commentTableVIew.mj_header endRefreshing];
+    }];
+}
 
 /**
  *  键盘Frame变化通知处理方法
@@ -81,31 +130,62 @@
     }];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     // 注销通知观察者
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    NSInteger hotCount = self.hotComments.count;
+    NSInteger lastestCount = self.lastestComments.count;
+    
+    if (hotCount) return 2; // 有最热评论
+    if (lastestCount) return 1; // 只有最新评论
+    return 0; // 无最新评论
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    NSInteger hotCount = self.hotComments.count;
+    
+    if (section == 0) { // 最热评论 或 最新评论
+        return hotCount ? self.hotComments.count : self.lastestComments.count;
+    } else { // 最新评论
+        return self.lastestComments.count;
+    }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSInteger hotCount = self.hotComments.count;
     
-    cell.textLabel.text = [NSString stringWithFormat:@"row:%zd", indexPath.row];
+    if (section == 0) { // 最热评论 或 最新评论
+        return hotCount ? @"最热评论" : @"最新评论";
+    } else { // 最新评论
+        return @"最新评论";
+    }
+}
+
+static NSString * const cellID = @"cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    JHTopicComment *comment = [self commentFromIndexPath:(NSIndexPath *)indexPath];
+    cell.textLabel.text = comment.content;
     
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"%zd", section];
+- (JHTopicComment *)commentFromIndexPath:(NSIndexPath *)indexPath {
+    NSInteger hotCount = self.hotComments.count;
+    
+    if (indexPath.section == 0) {
+        return hotCount ? self.hotComments[indexPath.row] : self.lastestComments[indexPath.row];
+    } else {
+        return self.lastestComments[indexPath.row];
+    }
 }
 
 #pragma mark - UITableViewDelegate

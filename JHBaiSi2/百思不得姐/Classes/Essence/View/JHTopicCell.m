@@ -116,6 +116,8 @@
     
     // 当cell被图片复用时
     if ([topic.type isEqualToString:JHTopicImageKey] || [topic.type isEqualToString:JHTopicGifKey]) {
+        [self.audiView removeFromSuperview];
+        [self.videoView removeFromSuperview];
         // 中部图片视图内部控件设置
         self.picView.topic = topic;
         // 设置图片视图Frame(此frame计算被封装到了数据模型中)
@@ -123,11 +125,17 @@
     }
     // 当cell被音频复用时
     else if ([topic.type isEqualToString:JHTopicAudioKey]) {
+        [self.picView removeFromSuperview];
+        [self.videoView removeFromSuperview];
+        
         self.audiView.topic = topic;
         self.audiView.frame = topic.audioViewFrame;
     }
     // 当cell被视频复用时
     else if ([topic.type isEqualToString:JHTopicVideoKey]) {
+        [self.picView removeFromSuperview];
+        [self.audiView removeFromSuperview];
+        
         self.videoView.topic = topic;
         self.videoView.frame = topic.videoViewFrame;
     }
@@ -184,6 +192,17 @@
     frame.origin.y += JHTopicMargin;
     
     [super setFrame:frame];
+}
+
+/**
+ *  更多按钮点击处理
+ */
+- (IBAction)moreBtnClick:(id)sender {
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"收藏" style:UIAlertActionStyleDefault handler:nil]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:nil]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self.window.rootViewController presentViewController:actionSheet animated:YES completion:nil];
 }
 
 /**

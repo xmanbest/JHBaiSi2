@@ -22,26 +22,29 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-6Q-G4A" userLabel="名字">
-                        <rect key="frame" x="55" y="10" width="226" height="19.5"/>
+                        <rect key="frame" x="55" y="10" width="221" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vl-42-TNg" userLabel="时间">
-                        <rect key="frame" x="55" y="29" width="226" height="16"/>
+                        <rect key="frame" x="55" y="29" width="221" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-yS-qlI" userLabel="关注">
-                        <rect key="frame" x="291" y="10" width="19" height="20"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-yS-qlI" userLabel="更多">
+                        <rect key="frame" x="286" y="10" width="24" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="eXx-Zj-TYy"/>
-                            <constraint firstAttribute="width" constant="19" id="gK7-wS-P07"/>
+                            <constraint firstAttribute="width" constant="24" id="gK7-wS-P07"/>
                         </constraints>
-                        <state key="normal" backgroundImage="cellFollowIcon"/>
+                        <state key="normal" backgroundImage="cellmorebtnnormal"/>
                         <state key="disabled" backgroundImage="cellFollowDisableIcon"/>
-                        <state key="highlighted" backgroundImage="cellFollowClickIcon"/>
+                        <state key="highlighted" backgroundImage="cellmorebtnclick"/>
+                        <connections>
+                            <action selector="moreBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a3I-HC-7Bd"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFG-Ga-v9c" userLabel="底部控件">
                         <rect key="frame" x="0.0" y="192" width="320" height="44"/>
@@ -233,9 +236,9 @@
         <image name="Profile_AddV_authen" width="14" height="14"/>
         <image name="cell-button-line" width="1" height="29"/>
         <image name="cell-content-line" width="299" height="1"/>
-        <image name="cellFollowClickIcon" width="19" height="20"/>
         <image name="cellFollowDisableIcon" width="19" height="20"/>
-        <image name="cellFollowIcon" width="19" height="20"/>
+        <image name="cellmorebtnclick" width="24" height="20"/>
+        <image name="cellmorebtnnormal" width="24" height="20"/>
         <image name="mainCellCai" width="20" height="20"/>
         <image name="mainCellCaiClick" width="20" height="20"/>
         <image name="mainCellComment" width="20" height="20"/>

@@ -8,6 +8,9 @@
 
 #import "JHTopicUser.h"
 
+NSString * const JHTopicUserSexMale = @"m";
+NSString * const JHTopicUserSexFemale = @"f";
+
 @implementation JHTopicUser
 
 @end

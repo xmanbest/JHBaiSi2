@@ -18,7 +18,9 @@ NSString * const JHTopicImageKey = @"image";
 NSString * const JHTopicWordKey = @"text";
 
 @interface JHTopic ()
-
+{
+    CGFloat _cellH;
+}
 @end
 
 @implementation JHTopic
@@ -74,12 +76,14 @@ NSString * const JHTopicWordKey = @"text";
  *  返回cell高度
  */
 - (CGFloat)cellH {
+    if (_cellH != 0) return _cellH;
+        
     CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width - 2*JHTopicMargin, MAXFLOAT);
     // 文本高度
     CGFloat textH = [self.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
     
     // cell高度
-    CGFloat cellH = JHIconH + JHBottomViewH + textH + 3*JHTopicMargin;
+    _cellH = JHIconH + JHBottomViewH + textH + 3*JHTopicMargin;
     
     // 中间多媒体显示控件高度
     // 图片topic相关
@@ -103,7 +107,7 @@ NSString * const JHTopicWordKey = @"text";
         _picViewFrame = CGRectMake(pX, pY, pW, pH);
         
         // 图片视图高度
-        cellH = cellH + pH + JHTopicMargin;
+        _cellH += pH + JHTopicMargin;
     } // 音频topic相关
     else if ([self.type isEqualToString:JHTopicAudioKey]) {
         // 计算frame
@@ -114,7 +118,7 @@ NSString * const JHTopicWordKey = @"text";
         _audioViewFrame = CGRectMake(aX, aY, aW, aH);
         
         // 高度叠加
-        cellH += aH + JHTopicMargin;
+        _cellH += aH + JHTopicMargin;
     } // 视频topic相关
     else if ([self.type isEqualToString:JHTopicVideoKey]) {
         // 计算frame
@@ -125,7 +129,7 @@ NSString * const JHTopicWordKey = @"text";
         _videoViewFrame = CGRectMake(vX, vY, vW, vH);
         
         // 高度叠加
-        cellH += vH + JHTopicMargin;
+        _cellH += vH + JHTopicMargin;
     }
     
     // 最热评论高度
@@ -147,12 +151,12 @@ NSString * const JHTopicWordKey = @"text";
                                                                                         }
                                                                                 context:nil].size.height;
         
-        cellH += JHTopicTopCommentTitleH + topCommentContentH + JHTopicMargin;
+        _cellH += JHTopicTopCommentTitleH + topCommentContentH + JHTopicMargin;
     }
     
     // cell的高度在setFrame方法中会减少10，所以此处提前增加10
-    cellH += JHTopicMargin;
-    return cellH;
+    _cellH += JHTopicMargin;
+    return _cellH;
 }
 
 @end

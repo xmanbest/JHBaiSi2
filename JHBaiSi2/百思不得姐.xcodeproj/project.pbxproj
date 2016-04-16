@@ -43,6 +43,8 @@
 		51A91C881CBF288A0073273A /* JHTopicComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C871CBF288A0073273A /* JHTopicComment.m */; };
 		51A91C8C1CBFB99E0073273A /* JHTopicCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C8A1CBFB99E0073273A /* JHTopicCommentViewController.m */; };
 		51A91C8D1CBFB99E0073273A /* JHTopicCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C8B1CBFB99E0073273A /* JHTopicCommentViewController.xib */; };
+		51A91C911CC296830073273A /* JHTopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C8F1CC296830073273A /* JHTopicCommentCell.m */; };
+		51A91C921CC296830073273A /* JHTopicCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C901CC296830073273A /* JHTopicCommentCell.xib */; };
 		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
 		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
@@ -138,6 +140,9 @@
 		51A91C891CBFB99E0073273A /* JHTopicCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicCommentViewController.h; sourceTree = "<group>"; };
 		51A91C8A1CBFB99E0073273A /* JHTopicCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicCommentViewController.m; sourceTree = "<group>"; };
 		51A91C8B1CBFB99E0073273A /* JHTopicCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicCommentViewController.xib; sourceTree = "<group>"; };
+		51A91C8E1CC296830073273A /* JHTopicCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicCommentCell.h; sourceTree = "<group>"; };
+		51A91C8F1CC296830073273A /* JHTopicCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicCommentCell.m; sourceTree = "<group>"; };
+		51A91C901CC296830073273A /* JHTopicCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicCommentCell.xib; sourceTree = "<group>"; };
 		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
 		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
 		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
@@ -324,6 +329,9 @@
 				5102BD641CB39A9B0078D26B /* JHTopicCell.h */,
 				5102BD651CB39A9B0078D26B /* JHTopicCell.m */,
 				5102BD661CB39A9B0078D26B /* JHTopicCell.xib */,
+				51A91C8E1CC296830073273A /* JHTopicCommentCell.h */,
+				51A91C8F1CC296830073273A /* JHTopicCommentCell.m */,
+				51A91C901CC296830073273A /* JHTopicCommentCell.xib */,
 				51EECFEC1CB640A400677631 /* JHTopicPictureView.h */,
 				51EECFED1CB640A400677631 /* JHTopicPictureView.m */,
 				51EECFEF1CB640B700677631 /* JHTopicPictureView.xib */,
@@ -618,6 +626,7 @@
 				513751481CA37A0A00902C97 /* Assets.xcassets in Resources */,
 				51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */,
 				513751B21CA6472C00902C97 /* JHRecommendCategoryTableViewCell.xib in Resources */,
+				51A91C921CC296830073273A /* JHTopicCommentCell.xib in Resources */,
 				5102BD681CB39A9B0078D26B /* JHTopicCell.xib in Resources */,
 				51F2B8F81CABAEDC0096A3E0 /* JHLoginRegisterViewController.xib in Resources */,
 				513751AA1CA639C800902C97 /* JHRecommendViewController.xib in Resources */,
@@ -717,6 +726,7 @@
 				512D787B1CAA76690032CE49 /* JHRecommendTagViewController.m in Sources */,
 				51F2B8F71CABAEDC0096A3E0 /* JHLoginRegisterViewController.m in Sources */,
 				51F2B90F1CAE3B6A0096A3E0 /* JHWordTableViewController.m in Sources */,
+				51A91C911CC296830073273A /* JHTopicCommentCell.m in Sources */,
 				512D78721CA8D0310032CE49 /* JHRecommendUser.m in Sources */,
 				51F194621CAAA71300B254EF /* JHRecommendTagCell.m in Sources */,
 				51F2B91B1CAFA3830096A3E0 /* JHTopicUser.m in Sources */,

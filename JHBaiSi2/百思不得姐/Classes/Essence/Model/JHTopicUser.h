@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+UIKIT_EXTERN NSString * const JHTopicUserSexMale;
+UIKIT_EXTERN NSString * const JHTopicUserSexFemale;
+
 @interface JHTopicUser : NSObject
 /*
 "id":"15229286",

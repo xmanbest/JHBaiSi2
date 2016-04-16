@@ -8,10 +8,13 @@
 
 #import "JHTopicCommentViewController.h"
 #import "JHTopicCell.h"
+#import "JHTopicCommentCell.h"
 #import "JHTopicComment.h"
 #import <AFNetworking.h>
 #import <MJRefresh.h>
 #import <MJExtension.h>
+
+static NSString * const JHTopicCommentCellID = @"topicComment";
 
 @interface JHTopicCommentViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputToViewBottomSpace;
@@ -24,6 +27,10 @@
  *  最新评论
  */
 @property (strong, nonatomic) NSMutableArray *lastestComments;
+/**
+ *  头部视图被删除最热评论模型数据临时仓库
+ */
+@property (strong, nonatomic) JHTopicComment *headerTopcommentBackup;
 @end
 
 @implementation JHTopicCommentViewController
@@ -65,16 +72,30 @@
     // 设置tableView顶部缩进
     self.commentTableVIew.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
+    // 当有最热评论时，头部不用重复显示，删除此部分的数据模型，并保存删除的数据
+    if (self.topic.top_comment) {
+        self.headerTopcommentBackup = self.topic.top_comment;
+        self.topic.top_comment = nil;
+        // 因为cellH != 0 时不会重新计算新值
+        [self.topic setValue:@0 forKey:@"cellH"];
+    }
+    
     // 设置tableViewHeader显示视图(中间间隔一个View可以屏蔽header对cellframe的隐式修改)
     UIView *headerView = [[UIView alloc] init];
-    
     JHTopicCell *cell = [JHTopicCell topicCell];
     cell.topic = self.topic;
     cell.size = CGSizeMake(JHScreenW, self.topic.cellH);
     [headerView addSubview:cell];
-    
     headerView.height = self.topic.cellH;
     self.commentTableVIew.tableHeaderView = headerView;
+    
+    // 评论tableVIew注册cell
+    [self.commentTableVIew registerNib:[UINib nibWithNibName:NSStringFromClass([JHTopicCommentCell class]) bundle:nil] forCellReuseIdentifier:JHTopicCommentCellID];
+    
+    // cell根据内容自动判定cell高度相关（与xib中的相关约束共同起作用，from iOS8.0）
+    self.commentTableVIew.estimatedRowHeight = 44;
+    self.commentTableVIew.rowHeight = UITableViewAutomaticDimension;
+    
 }
 
 /**
@@ -133,6 +154,13 @@
 - (void)dealloc {
     // 注销通知观察者
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    // 当有最热评论时，头部最热评论被删除的数据需要恢复
+    if (self.topic.top_comment) {
+        self.topic.top_comment = self.headerTopcommentBackup;
+        // 因为cellH != 0 时不会重新计算新值
+        [self.topic setValue:@0 forKey:@"cellH"];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -165,15 +193,11 @@
     }
 }
 
-static NSString * const cellID = @"cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
+    JHTopicCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:JHTopicCommentCellID];
     
     JHTopicComment *comment = [self commentFromIndexPath:(NSIndexPath *)indexPath];
-    cell.textLabel.text = comment.content;
+    cell.topicComment = comment;
     
     return cell;
 }

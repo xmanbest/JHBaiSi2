@@ -24,7 +24,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    // 添加背景图片，叠加模拟分割线
+    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainCellBackground"]];
 }
 
 - (void)setTopicComment:(JHTopicComment *)topicComment {

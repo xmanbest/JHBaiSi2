@@ -31,9 +31,22 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
  *  头部视图被删除最热评论模型数据临时仓库
  */
 @property (strong, nonatomic) JHTopicComment *headerTopcommentBackup;
+/**
+ *  纪录最新评论已经加载到的页数
+ */
+@property (assign, nonatomic) NSInteger lastestCommentsCurrentPage;
+
+@property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
 @end
 
 @implementation JHTopicCommentViewController
+
+- (AFHTTPSessionManager *)sessionManager {
+    if (_sessionManager == nil) {
+        _sessionManager = [AFHTTPSessionManager manager];
+    }
+    return _sessionManager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,9 +56,12 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
     [self setupTableView];
     // 添加顶部下拉刷新控件
     [self setupHeadRefresh];
+    // 添加底部上拉刷新控件
+    [self setupFootRefresh];
 
     // 获取评论 api
-    // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=18041737&device=ios%20device&from=ios&hot=1&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1
+    // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=18043065&device=ios%20device&from=ios&hot=1&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1
+    // http://api.budejie.com/api/api_open.php?a=dataList&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&data_id=18043065&device=ios%20device&from=ios&hot=1&jbk=0&lastcid=48790347&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=2&per=50&udid=&ver=4.1
     
     // 获取点赞用户list api
     // http://api.budejie.com/api/api_open.php?a=praise&appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&c=comment&client=iphone&device=ios%20device&from=ios&id=17979407&jbk=0&mac=&market=&maxtime=0&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&per=5&sex=m&udid=&ver=4.1
@@ -69,8 +85,11 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
  *  tableView设置
  */
 - (void)setupTableView {
+    // 去掉分割线
+    self.commentTableVIew.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     // 设置tableView顶部缩进
-    self.commentTableVIew.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.commentTableVIew.contentInset = UIEdgeInsetsMake(64, 0, JHTopicMargin, 0);
     
     // 当有最热评论时，头部不用重复显示，删除此部分的数据模型，并保存删除的数据
     if (self.topic.top_comment) {
@@ -106,21 +125,37 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
     self.commentTableVIew.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerDownRefresh)];
     // 自动淡化
     self.commentTableVIew.mj_header.automaticallyChangeAlpha = YES;
-    // 下拉刷新
+    // 立即下拉刷新
     [self.commentTableVIew.mj_header beginRefreshing];
 }
+
+/**
+ *  添加底部上拉刷新控件
+ */
+- (void)setupFootRefresh {
+    // 添加控件
+    self.commentTableVIew.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerUpRefresh)];
+    // 初始设置为不可见(在上拉和下拉时根据数据判断是否显示)
+    self.commentTableVIew.mj_footer.hidden = YES;
+}
+
 /**
  *  顶部下拉刷新处理方法
  */
 - (void)headerDownRefresh {
+    // 防止网络延迟，多请求处理回调block中造成数据模型混乱，需要取消之前延迟的请求
+    [self.sessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
     // 网络请求评论数据
-    NSString *urlStr = @"http://api.budejie.com/api/api_open.php?appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&client=iphone&device=ios%20device&from=ios&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1";
+    NSString *urlStr = @"http://api.budejie.com/api/api_open.php?appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&client=iphone&device=ios%20device&from=ios&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&per=50&udid=&ver=4.1";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"dataList";
     params[@"c"] = @"comment";
     params[@"data_id"] = self.topic.ID;
     params[@"hot"] = @"1";
-    [[AFHTTPSessionManager manager] GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSInteger page = 1; // 防止读取网络数据失败时，改变当前页数，此处添加中间变量
+    params[@"page"] = @(page);
+    [self.sessionManager GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSDictionary *dict = (NSDictionary *)responseObject;
 //        [dict writeToFile:@"/Users/lijianhua/Desktop/topicComment.plist" atomically:YES];
         // 保存数据到数据模型
@@ -128,11 +163,61 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
         self.lastestComments = [JHTopicComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         // 刷新内容tableView
         [self.commentTableVIew reloadData];
+        
         // 结束顶部刷新状态
         [self.commentTableVIew.mj_header endRefreshing];
+        
+        // 根据是否有更多最新评论数据，判断是否显示底部上拉控件
+        self.commentTableVIew.mj_footer.hidden = !(self.lastestComments.count < [responseObject[@"total"] integerValue]);
+        
+        // 保存最新评论当前页数
+        self.lastestCommentsCurrentPage = page;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // 结束顶部刷新状态
         [self.commentTableVIew.mj_header endRefreshing];
+    }];
+}
+
+- (void)footerUpRefresh {
+    // 防止网络延迟，多请求处理回调block中造成数据模型混乱，需要取消之前延迟的请求
+    [self.sessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    // 网络请求评论数据
+    NSString *urlStr = @"http://api.budejie.com/api/api_open.php?appname=baisi_xiaohao&asid=63CB234F-A84B-469E-A741-426F9B739C6C&client=iphone&device=ios%20device&from=ios&jbk=0&mac=&market=&openudid=11b2cfdd928b5fd15c0d37ea09d674a151762b55&page=1&per=50&udid=&ver=4.1";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"dataList";
+    params[@"c"] = @"comment";
+    params[@"data_id"] = self.topic.ID;
+    params[@"hot"] = @"1";
+    // 当前页最后的最新评论的id
+    params[@"lastcid"] = [[self.lastestComments lastObject] ID];
+    // 下一页
+    NSInteger page = self.lastestCommentsCurrentPage + 1;
+    params[@"page"] = @(page);
+    [self.sessionManager GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //        NSDictionary *dict = (NSDictionary *)responseObject;
+        //        [dict writeToFile:@"/Users/lijianhua/Desktop/topicComment.plist" atomically:YES];
+        // 保存数据到数据模型
+        self.hotComments = [JHTopicComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
+        NSArray *newPageLastestComments = [JHTopicComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.lastestComments addObjectsFromArray:newPageLastestComments];
+        // 刷新内容tableView
+        [self.commentTableVIew reloadData];
+        
+        // 结束顶部刷新状态
+        [self.commentTableVIew.mj_header endRefreshing];
+        
+        // 根据是否有更多最新评论数据，判断是否显示底部上拉控件
+        self.commentTableVIew.mj_footer.hidden = !(self.lastestComments.count < [responseObject[@"total"] integerValue]);
+        
+        // 保存最新评论当前页数
+        self.lastestCommentsCurrentPage = page;
+        
+        // 根据是否有更多最新评论数据，判断是否显示底部上拉控件
+        self.commentTableVIew.mj_footer.hidden = !(self.lastestComments.count < [responseObject[@"total"] integerValue]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 结束底部上拉刷新控件刷新状态
+        [self.commentTableVIew.mj_footer endRefreshing];
     }];
 }
 
@@ -161,6 +246,10 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
         // 因为cellH != 0 时不会重新计算新值
         [self.topic setValue:@0 forKey:@"cellH"];
     }
+    
+    // 防止网络延迟时，退出此页面网络请求session中的task依旧回调block，此处需要将延迟的task都取消
+//    [self.sessionManager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    [self.sessionManager invalidateSessionCancelingTasks:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -175,7 +264,6 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger hotCount = self.hotComments.count;
-    
     if (section == 0) { // 最热评论 或 最新评论
         return hotCount ? self.hotComments.count : self.lastestComments.count;
     } else { // 最新评论

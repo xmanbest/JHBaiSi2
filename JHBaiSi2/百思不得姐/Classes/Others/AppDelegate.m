@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "JHTabBarController.h"
 #import "JHOneTimeLaunchView.h"
+#import "JHStatusWindow.h"
 
 @interface AppDelegate ()
 
@@ -49,6 +50,12 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    /**
+     添加自定义顶部statusBar（带有回滚顶部功能），会让各个控制器的statusBar不显示，所以需要配置Info.plist禁用控制器statusBar
+     View controller-based status bar appearance ＝ NO
+     */
+    [JHStatusWindow show];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

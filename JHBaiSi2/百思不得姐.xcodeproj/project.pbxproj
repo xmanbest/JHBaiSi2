@@ -45,6 +45,7 @@
 		51A91C8D1CBFB99E0073273A /* JHTopicCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C8B1CBFB99E0073273A /* JHTopicCommentViewController.xib */; };
 		51A91C911CC296830073273A /* JHTopicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C8F1CC296830073273A /* JHTopicCommentCell.m */; };
 		51A91C921CC296830073273A /* JHTopicCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91C901CC296830073273A /* JHTopicCommentCell.xib */; };
+		51A91C951CC3E1610073273A /* JHStatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C941CC3E1610073273A /* JHStatusWindow.m */; };
 		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
 		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
@@ -143,6 +144,8 @@
 		51A91C8E1CC296830073273A /* JHTopicCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicCommentCell.h; sourceTree = "<group>"; };
 		51A91C8F1CC296830073273A /* JHTopicCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTopicCommentCell.m; sourceTree = "<group>"; };
 		51A91C901CC296830073273A /* JHTopicCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHTopicCommentCell.xib; sourceTree = "<group>"; };
+		51A91C931CC3E1610073273A /* JHStatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHStatusWindow.h; sourceTree = "<group>"; };
+		51A91C941CC3E1610073273A /* JHStatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHStatusWindow.m; sourceTree = "<group>"; };
 		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
 		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
 		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 				51F2B9021CAD227B0096A3E0 /* JHOneTimeLaunchView.xib */,
 				51EECFF11CBB3F0000677631 /* JHProgressView.h */,
 				51EECFF21CBB3F0000677631 /* JHProgressView.m */,
+				51A91C931CC3E1610073273A /* JHStatusWindow.h */,
+				51A91C941CC3E1610073273A /* JHStatusWindow.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -703,6 +708,7 @@
 				51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */,
 				5137519E1CA4263200902C97 /* JHTabBar.m in Sources */,
 				512D78761CA8D0E80032CE49 /* JHRecommedUserCell.m in Sources */,
+				51A91C951CC3E1610073273A /* JHStatusWindow.m in Sources */,
 				51F2B8FE1CACF3A60096A3E0 /* JHCustomPlaceholdTextField.m in Sources */,
 				5137519C1CA4263200902C97 /* JHTabBarController.m in Sources */,
 				513751951CA4263200902C97 /* JHEssenceViewController.m in Sources */,

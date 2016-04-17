@@ -23,12 +23,18 @@
     [super viewDidLoad];
     
     [self.view insertSubview:self.backgroundImageView atIndex:0];
-    
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // 顶部状态栏改为白色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
+
+// 因为添加了自定义的状态条会导致控制器的状态条不显示，所以使用application的状态条，所以此处作废
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//    return UIStatusBarStyleLightContent;
+//}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
@@ -64,6 +70,9 @@
  *  点击关闭按钮
  */
 - (IBAction)closeBtnClick:(id)sender {
+    // 顶部状态栏恢复为原色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

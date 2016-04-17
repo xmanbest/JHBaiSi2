@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *voiceCommentBtn;
 @end
 
 @implementation JHTopicCommentCell
@@ -34,6 +35,15 @@
     self.userNameLabel.text = topicComment.user.username;
     self.likeCountLabel.text = topicComment.like_count;
     self.contentLabel.text = topicComment.content;
+    
+    // 设置音频评论
+    if (topicComment.voiceuri.length != 0) { // 存在音频评论
+        self.voiceCommentBtn.hidden = NO;
+        [self.voiceCommentBtn setTitle:topicComment.voicetime forState:UIControlStateNormal];
+    } // 不存在音频评论
+    else {
+        self.voiceCommentBtn.hidden = YES;
+    }
 }
 
 @end

@@ -48,4 +48,12 @@
     }
 }
 
+#pragma mark - 弹出MenuController相关
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    return NO;
+}
 @end

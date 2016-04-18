@@ -290,6 +290,9 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
     return cell;
 }
 
+/**
+ *  通过传入cell的indexPath智能返回对应的最热或者最新评论数据模型
+ */
 - (JHTopicComment *)commentFromIndexPath:(NSIndexPath *)indexPath {
     NSInteger hotCount = self.hotComments.count;
     
@@ -303,6 +306,53 @@ static NSString * const JHTopicCommentCellID = @"topicComment";
 #pragma mark - UITableViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
+    
+    // 隐藏MenuController
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIMenuController *menuC = [UIMenuController sharedMenuController];
+    
+    if (menuC.menuVisible == YES) {
+        return;
+    }
+    
+    JHTopicCommentCell *selCell = [tableView cellForRowAtIndexPath:indexPath];
+    // 让被选中的cell成为第一响应者
+    [selCell becomeFirstResponder];
+    
+    // 设置menuController
+    UIMenuItem *ding = [[UIMenuItem alloc] initWithTitle:@"顶" action:@selector(dingClick:)];
+    UIMenuItem *reply = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(replyClick:)];
+    UIMenuItem *report = [[UIMenuItem alloc] initWithTitle:@"举报" action:@selector(reportClick:)];
+    menuC.menuItems = @[ding, reply, report];
+    
+    [menuC setMenuVisible:YES animated:YES];
+    // 设置menu显示区域
+    CGRect menuDisplayRect = selCell.bounds;
+    menuDisplayRect.origin.y = menuDisplayRect.size.height * 0.5;
+    [menuC setTargetRect:menuDisplayRect inView:selCell];
+}
+
+#pragma mark - MenuController点击相关
+- (void)dingClick:(UIMenuController *)menuC {
+    NSIndexPath *indexPath = [self.commentTableVIew indexPathForSelectedRow];
+    JHTopicComment *comment = [self commentFromIndexPath:indexPath];
+    JHLog(@"%@", comment.content);
+}
+
+- (void)replyClick:(UIMenuController *)menuC {
+    NSIndexPath *indexPath = [self.commentTableVIew indexPathForSelectedRow];
+    JHTopicComment *comment = [self commentFromIndexPath:indexPath];
+    JHLog(@"%@", comment.content);
+}
+
+- (void)reportClick:(UIMenuController *)menuC {
+    NSIndexPath *indexPath = [self.commentTableVIew indexPathForSelectedRow];
+    JHTopicComment *comment = [self commentFromIndexPath:indexPath];
+    JHLog(@"%@", comment.content);
+}
+
 
 @end

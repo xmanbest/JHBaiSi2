@@ -36,7 +36,7 @@
     _recommendTag = recommendTag;
     
     self.nameLabel.text = recommendTag.theme_name;
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:recommendTag.image_list] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [self.iconImageView setIconImageWithUrlStr:recommendTag.image_list];
     
     CGFloat subNum = [recommendTag.sub_number doubleValue] / 10000;
     NSString *subStr = subNum >= 1 ? [NSString stringWithFormat:@"%0.1f万人订阅", subNum]  : [NSString stringWithFormat:@"%@人订阅", recommendTag.sub_number];

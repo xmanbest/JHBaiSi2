@@ -14,6 +14,8 @@
 #import "UIView+JHFrameConvenince.h"
 #import "UIBarButtonItem+JHExtention.h"
 #import "NSDate+JHExtension.h"
+#import "UIImage+JHExtension.h"
+#import "UIImageView+JHExtension.h"
 #import "JHConst.h"
 
 // *****设置DEBUG Log切换宏 begin*****

@@ -38,17 +38,8 @@ static UIWindow *statusWindow_ = nil;
  */
 + (void)setOnDisplayScrollViewOffsetTopInView:(UIView *)supview {
     for (UIView *subview in supview.subviews) {
-        // 判断子视图是否是scrollView
-        BOOL isScrollView = [subview isKindOfClass:[UIScrollView class]];
-        // 判断子视图是否 可见 且 不透明
-        BOOL isVisible = subview.hidden == NO && subview.alpha > 0.01;
-        // 判断子视图是否 在主窗体的层次结构中 且 在主窗体的坐标系下是否与主窗体有交集(显示在主窗体范围下)
-        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        CGRect subViewFrameInKeyWindow = [subview.superview convertRect:subview.frame toView:keyWindow];
-        BOOL isInKeyWindow = subview.window == keyWindow && CGRectIntersectsRect(subViewFrameInKeyWindow, keyWindow.frame);
-        
-        // 1.满足上述判断的进行回滚
-        if (isScrollView && isVisible && isInKeyWindow) {
+        // 1.判断是否正在被主窗口范围显示，进行回滚
+        if (subview.showingInKeyWindow) {
             UIScrollView *scroll = ((UIScrollView *)subview);
             CGPoint offset = scroll.contentOffset;
             offset.y = -scroll.contentInset.top;

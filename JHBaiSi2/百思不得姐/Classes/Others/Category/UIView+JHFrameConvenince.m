@@ -88,4 +88,20 @@
     center.y = centerY;
     self.center = center;
 }
+
+/**
+ *  判断是否正在被主窗口范围显示
+ */
+- (BOOL)isShowingInKeyWindow {
+    // 判断子视图是否是scrollView
+    BOOL isScrollView = [self isKindOfClass:[UIScrollView class]];
+    // 判断子视图是否 可见 且 不透明
+    BOOL isVisible = self.hidden == NO && self.alpha > 0.01;
+    // 判断子视图是否 在主窗体的层次结构中 且 在主窗体的坐标系下是否与主窗体有交集(显示在主窗体范围下)
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    CGRect subViewFrameInKeyWindow = [self.superview convertRect:self.frame toView:keyWindow];
+    BOOL isInKeyWindow = self.window == keyWindow && CGRectIntersectsRect(subViewFrameInKeyWindow, keyWindow.frame);
+    
+    return isScrollView && isVisible && isInKeyWindow;
+}
 @end

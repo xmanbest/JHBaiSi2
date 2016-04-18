@@ -99,7 +99,7 @@
     
     self.nameLabel.text = topic.u.name;
     
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[topic.u.header firstObject]] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [self.iconView setIconImageWithUrlStr:[topic.u.header firstObject]];
  
     // 设置格式化后的经过时间
     self.timeLabel.text = topic.passtime;

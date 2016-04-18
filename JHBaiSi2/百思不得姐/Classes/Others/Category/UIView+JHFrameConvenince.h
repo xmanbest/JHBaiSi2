@@ -17,4 +17,9 @@
 @property(nonatomic, assign)CGPoint origin;
 @property(nonatomic, assign)CGFloat centerX;
 @property(nonatomic, assign)CGFloat centerY;
+
+/**
+ *  判断是否正在被主窗口范围显示
+ */
+@property(nonatomic, assign, readonly, getter=isShowingInKeyWindow)BOOL showingInKeyWindow;
 @end

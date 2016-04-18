@@ -26,7 +26,7 @@
     _recommendUser = recommendUser;
     
     self.screenNameLabel.text = recommendUser.screen_name;
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:recommendUser.header]  placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [self.headerImageView setIconImageWithUrlStr:recommendUser.header];
     
     CGFloat fansNum = [recommendUser.fans_count doubleValue] / 10000;
     NSString *fansStr = fansNum >= 1 ? [NSString stringWithFormat:@"%0.1f万人关注", fansNum]  : [NSString stringWithFormat:@"%@人关注", recommendUser.fans_count];

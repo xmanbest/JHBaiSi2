@@ -32,7 +32,7 @@
 - (void)setTopicComment:(JHTopicComment *)topicComment {
     _topicComment = topicComment;
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:topicComment.user.profile_image]];
+    [self.iconImageView setIconImageWithUrlStr:topicComment.user.profile_image];
     self.sexImageView.image = topicComment.user.sex == JHTopicUserSexMale ? [UIImage imageNamed:@"Profile_manIcon"] : [UIImage imageNamed:@"Profile_womanIcon"];
     self.userNameLabel.text = topicComment.user.username;
     self.likeCountLabel.text = topicComment.like_count;

@@ -15,3 +15,6 @@ UIKIT_EXTERN CGFloat const JHTopicPictureHDefault;
 
 // TopicCell中最热评论标题的高度
 UIKIT_EXTERN CGFloat const JHTopicTopCommentTitleH;
+
+// TabBarController的item被点击通知
+UIKIT_EXTERN NSString * const JHTabBarDidSelectNotification;

@@ -26,6 +26,10 @@ static NSString * const JHTopicCellID = @"topic";
  *  获取下一页数据的key
  */
 @property(nonatomic, copy)NSString *npKey;
+/**
+ *  纪录选中的TabBarController的ItemIndex
+ */
+@property(nonatomic, assign)NSInteger selectedTabBarIndex;
 @end
 
 @implementation JHTopicViewController
@@ -33,15 +37,43 @@ static NSString * const JHTopicCellID = @"topic";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 基础设置
+    [self setup];
     // tableView基础设置
     [self setupTableView];
     // 设置头部下拉刷新控件
     [self setupHeaderDownRefleshControl];
     // 设置尾部上拉刷新控件
     [self setupFooterUpRefleshControl];
-    // 下拉刷新
-    [self.tableView.mj_header beginRefreshing];
     
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:JHTabBarDidSelectNotification object:nil];
+}
+
+/**
+ *  基础设置
+ */
+- (void)setup {
+    // 注册tabbarController的Item被点击通知的观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarControllerItemDidSelect:) name:JHTabBarDidSelectNotification object:nil];
+}
+
+/**
+ *  注册tabbarController的Item被点击处理方法
+ */
+- (void)tabBarControllerItemDidSelect:(NSNotification *)noti {
+    NSInteger selectedTabBarIndex = self.tabBarController.selectedIndex;
+    
+    // 当第二次选择同一个tabbarItem 且 只操作正在主窗体中显示的topicViewController
+    if (self.selectedTabBarIndex == selectedTabBarIndex && self.view.isShowingInKeyWindow) {
+        // 下拉刷新
+        [self.tableView.mj_header beginRefreshing];
+    }
+    
+    // 纪录当前的选择index
+    self.selectedTabBarIndex = selectedTabBarIndex;
 }
 
 /**
@@ -59,6 +91,7 @@ static NSString * const JHTopicCellID = @"topic";
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([JHTopicCell class]) bundle:nil] forCellReuseIdentifier:JHTopicCellID];
+    
 }
 /**
  *  设置头部下拉刷新控件
@@ -67,6 +100,9 @@ static NSString * const JHTopicCellID = @"topic";
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerDownReflesh)];
     // 根据拖拽比例自动切换透明度
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    // 下拉刷新
+    [self.tableView.mj_header beginRefreshing];
+
 }
 /**
  *  设置尾部上拉刷新控件

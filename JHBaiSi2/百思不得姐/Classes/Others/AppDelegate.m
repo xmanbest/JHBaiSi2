@@ -11,7 +11,7 @@
 #import "JHOneTimeLaunchView.h"
 #import "JHStatusWindow.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UITabBarControllerDelegate>
 
 @end
 
@@ -23,7 +23,9 @@
     self.window = [[UIWindow alloc] init];
     self.window.frame = [[UIScreen mainScreen] bounds];
     
-    self.window.rootViewController = [[JHTabBarController alloc] init];
+    JHTabBarController *tabBarC = [[JHTabBarController alloc] init];
+    tabBarC.delegate = self;
+    self.window.rootViewController = tabBarC;
     
     [self.window makeKeyAndVisible];
     
@@ -33,6 +35,13 @@
     
     return YES;
 }
+
+#pragma mark - UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    // 发送tabbarItem被点击通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:JHTabBarDidSelectNotification object:nil userInfo:nil];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

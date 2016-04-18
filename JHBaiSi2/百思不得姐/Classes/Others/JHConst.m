@@ -21,3 +21,6 @@ CGFloat const JHTopicPictureHDefault = 350;
 // TopicCell中最热评论标题的高度
 CGFloat const JHTopicTopCommentTitleH = 20;
 
+// TabBarController的item被点击通知
+NSString * const JHTabBarDidSelectNotification = @"JHTabBarDidSelectNotification";
+

@@ -18,3 +18,8 @@ UIKIT_EXTERN CGFloat const JHTopicTopCommentTitleH;
 
 // TabBarController的item被点击通知
 UIKIT_EXTERN NSString * const JHTabBarDidSelectNotification;
+
+// JHMeImageButtonCell中按钮的高度
+UIKIT_EXTERN CGFloat const JHMeImageButtonH;
+// JHMeImageButtonCell中按钮的列数
+UIKIT_EXTERN CGFloat const JHMeImageButtonMaxCol;

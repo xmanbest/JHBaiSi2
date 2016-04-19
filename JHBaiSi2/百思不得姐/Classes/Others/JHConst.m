@@ -24,3 +24,7 @@ CGFloat const JHTopicTopCommentTitleH = 20;
 // TabBarController的item被点击通知
 NSString * const JHTabBarDidSelectNotification = @"JHTabBarDidSelectNotification";
 
+// JHMeImageButtonCell中按钮的高度
+CGFloat const JHMeImageButtonH = JHTopicMargin + 44 + 30;
+// JHMeImageButtonCell中按钮的列数
+CGFloat const JHMeImageButtonMaxCol = 4;

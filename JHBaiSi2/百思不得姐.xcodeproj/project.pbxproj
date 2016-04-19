@@ -48,6 +48,14 @@
 		51A91C951CC3E1610073273A /* JHStatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C941CC3E1610073273A /* JHStatusWindow.m */; };
 		51A91C9B1CC4E4160073273A /* UIImage+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C9A1CC4E4160073273A /* UIImage+JHExtension.m */; };
 		51A91C9E1CC4EBFC0073273A /* UIImageView+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91C9D1CC4EBFC0073273A /* UIImageView+JHExtension.m */; };
+		51A91CA11CC5BBF00073273A /* JHMeSimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CA01CC5BBF00073273A /* JHMeSimpleCell.m */; };
+		51A91CA41CC5BC040073273A /* JHMeButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CA31CC5BC040073273A /* JHMeButtonCell.m */; };
+		51A91CA71CC5BDE00073273A /* JHMeImageButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CA61CC5BDE00073273A /* JHMeImageButtonCell.m */; };
+		51A91CAA1CC5C36A0073273A /* JHMeTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CA91CC5C36A0073273A /* JHMeTag.m */; };
+		51A91CAD1CC5C3830073273A /* JHMeSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CAC1CC5C3830073273A /* JHMeSquare.m */; };
+		51A91CB01CC5DA680073273A /* JHImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CAF1CC5DA680073273A /* JHImageButton.m */; };
+		51A91CB31CC684810073273A /* JHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CB21CC684810073273A /* JHWebViewController.m */; };
+		51A91CB51CC684F60073273A /* JHWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91CB41CC684F60073273A /* JHWebViewController.xib */; };
 		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
 		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
@@ -152,6 +160,21 @@
 		51A91C9A1CC4E4160073273A /* UIImage+JHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JHExtension.m"; sourceTree = "<group>"; };
 		51A91C9C1CC4EBFC0073273A /* UIImageView+JHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JHExtension.h"; sourceTree = "<group>"; };
 		51A91C9D1CC4EBFC0073273A /* UIImageView+JHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JHExtension.m"; sourceTree = "<group>"; };
+		51A91C9F1CC5BBF00073273A /* JHMeSimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMeSimpleCell.h; path = "百思不得姐/Classes/Others/Category/JHMeSimpleCell.h"; sourceTree = SOURCE_ROOT; };
+		51A91CA01CC5BBF00073273A /* JHMeSimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHMeSimpleCell.m; path = "百思不得姐/Classes/Others/Category/JHMeSimpleCell.m"; sourceTree = SOURCE_ROOT; };
+		51A91CA21CC5BC040073273A /* JHMeButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMeButtonCell.h; path = "百思不得姐/Classes/Others/Category/JHMeButtonCell.h"; sourceTree = SOURCE_ROOT; };
+		51A91CA31CC5BC040073273A /* JHMeButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHMeButtonCell.m; path = "百思不得姐/Classes/Others/Category/JHMeButtonCell.m"; sourceTree = SOURCE_ROOT; };
+		51A91CA51CC5BDE00073273A /* JHMeImageButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMeImageButtonCell.h; path = "百思不得姐/Classes/Others/Category/JHMeImageButtonCell.h"; sourceTree = SOURCE_ROOT; };
+		51A91CA61CC5BDE00073273A /* JHMeImageButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHMeImageButtonCell.m; path = "百思不得姐/Classes/Others/Category/JHMeImageButtonCell.m"; sourceTree = SOURCE_ROOT; };
+		51A91CA81CC5C36A0073273A /* JHMeTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMeTag.h; path = "百思不得姐/Classes/Others/Category/JHMeTag.h"; sourceTree = SOURCE_ROOT; };
+		51A91CA91CC5C36A0073273A /* JHMeTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHMeTag.m; path = "百思不得姐/Classes/Others/Category/JHMeTag.m"; sourceTree = SOURCE_ROOT; };
+		51A91CAB1CC5C3830073273A /* JHMeSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMeSquare.h; path = "百思不得姐/Classes/Others/Category/JHMeSquare.h"; sourceTree = SOURCE_ROOT; };
+		51A91CAC1CC5C3830073273A /* JHMeSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHMeSquare.m; path = "百思不得姐/Classes/Others/Category/JHMeSquare.m"; sourceTree = SOURCE_ROOT; };
+		51A91CAE1CC5DA680073273A /* JHImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHImageButton.h; path = "百思不得姐/Classes/Others/Category/JHImageButton.h"; sourceTree = SOURCE_ROOT; };
+		51A91CAF1CC5DA680073273A /* JHImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHImageButton.m; path = "百思不得姐/Classes/Others/Category/JHImageButton.m"; sourceTree = SOURCE_ROOT; };
+		51A91CB11CC684810073273A /* JHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHWebViewController.h; sourceTree = "<group>"; };
+		51A91CB21CC684810073273A /* JHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWebViewController.m; sourceTree = "<group>"; };
+		51A91CB41CC684F60073273A /* JHWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHWebViewController.xib; sourceTree = "<group>"; };
 		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
 		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
 		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
@@ -423,6 +446,9 @@
 			children = (
 				5137517A1CA4263200902C97 /* JHMeViewController.h */,
 				5137517B1CA4263200902C97 /* JHMeViewController.m */,
+				51A91CB11CC684810073273A /* JHWebViewController.h */,
+				51A91CB21CC684810073273A /* JHWebViewController.m */,
+				51A91CB41CC684F60073273A /* JHWebViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -430,6 +456,10 @@
 		5137517C1CA4263200902C97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				51A91CA81CC5C36A0073273A /* JHMeTag.h */,
+				51A91CA91CC5C36A0073273A /* JHMeTag.m */,
+				51A91CAB1CC5C3830073273A /* JHMeSquare.h */,
+				51A91CAC1CC5C3830073273A /* JHMeSquare.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -437,6 +467,14 @@
 		5137517D1CA4263200902C97 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				51A91C9F1CC5BBF00073273A /* JHMeSimpleCell.h */,
+				51A91CA01CC5BBF00073273A /* JHMeSimpleCell.m */,
+				51A91CA21CC5BC040073273A /* JHMeButtonCell.h */,
+				51A91CA31CC5BC040073273A /* JHMeButtonCell.m */,
+				51A91CA51CC5BDE00073273A /* JHMeImageButtonCell.h */,
+				51A91CA61CC5BDE00073273A /* JHMeImageButtonCell.m */,
+				51A91CAE1CC5DA680073273A /* JHImageButton.h */,
+				51A91CAF1CC5DA680073273A /* JHImageButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -639,6 +677,7 @@
 				512D78771CA8D0E80032CE49 /* JHRecommedUserCell.xib in Resources */,
 				51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */,
 				513751481CA37A0A00902C97 /* Assets.xcassets in Resources */,
+				51A91CB51CC684F60073273A /* JHWebViewController.xib in Resources */,
 				51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */,
 				513751B21CA6472C00902C97 /* JHRecommendCategoryTableViewCell.xib in Resources */,
 				51A91C921CC296830073273A /* JHTopicCommentCell.xib in Resources */,
@@ -717,17 +756,24 @@
 				513751A11CA4EB5700902C97 /* JHNavigationController.m in Sources */,
 				51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */,
 				5137519E1CA4263200902C97 /* JHTabBar.m in Sources */,
+				51A91CAD1CC5C3830073273A /* JHMeSquare.m in Sources */,
 				51A91C9E1CC4EBFC0073273A /* UIImageView+JHExtension.m in Sources */,
 				512D78761CA8D0E80032CE49 /* JHRecommedUserCell.m in Sources */,
 				51A91C951CC3E1610073273A /* JHStatusWindow.m in Sources */,
 				51F2B8FE1CACF3A60096A3E0 /* JHCustomPlaceholdTextField.m in Sources */,
 				51A91C9B1CC4E4160073273A /* UIImage+JHExtension.m in Sources */,
+				51A91CA11CC5BBF00073273A /* JHMeSimpleCell.m in Sources */,
 				5137519C1CA4263200902C97 /* JHTabBarController.m in Sources */,
+				51A91CA41CC5BC040073273A /* JHMeButtonCell.m in Sources */,
+				51A91CB01CC5DA680073273A /* JHImageButton.m in Sources */,
 				513751951CA4263200902C97 /* JHEssenceViewController.m in Sources */,
 				5102BD671CB39A9B0078D26B /* JHTopicCell.m in Sources */,
 				51F2B9121CAE3BA40096A3E0 /* JHAudioTableViewController.m in Sources */,
+				51A91CA71CC5BDE00073273A /* JHMeImageButtonCell.m in Sources */,
 				51A91C8C1CBFB99E0073273A /* JHTopicCommentViewController.m in Sources */,
+				51A91CB31CC684810073273A /* JHWebViewController.m in Sources */,
 				51EECFEE1CB640A400677631 /* JHTopicPictureView.m in Sources */,
+				51A91CAA1CC5C36A0073273A /* JHMeTag.m in Sources */,
 				51A91C851CBF107A0073273A /* JHTopicVideo.m in Sources */,
 				51F1945E1CAA9EA400B254EF /* JHRecommendTag.m in Sources */,
 				51F2B90C1CAE3B360096A3E0 /* JHPictureTableViewController.m in Sources */,

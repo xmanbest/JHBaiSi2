@@ -6,8 +6,8 @@
 //  Copyright © 2016年 lijianhua. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JHEssenceViewController.h"
 
-@interface JHNewViewController : UIViewController
+@interface JHNewViewController : JHEssenceViewController
 
 @end

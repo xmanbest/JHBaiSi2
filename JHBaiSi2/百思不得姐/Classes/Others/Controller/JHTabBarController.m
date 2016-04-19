@@ -41,7 +41,7 @@
     [self setupChildVC:[[JHEssenceViewController alloc] init] withTitle:@"精华" image:@"tabBar_essence_icon" selImage:@"tabBar_essence_click_icon"];
     [self setupChildVC:[[JHNewViewController alloc] init] withTitle:@"新帖" image:@"tabBar_new_icon" selImage:@"tabBar_new_click_icon"];
     [self setupChildVC:[[JHFriendTrendsViewController alloc] init] withTitle:@"关注" image:@"tabBar_friendTrends_icon" selImage:@"tabBar_friendTrends_click_icon"];
-    [self setupChildVC:[[JHMeViewController alloc] init] withTitle:@"我" image:@"tabBar_me_icon" selImage:@"tabBar_me_click_icon"];
+    [self setupChildVC:[[JHMeViewController alloc] initWithStyle:UITableViewStyleGrouped] withTitle:@"我" image:@"tabBar_me_icon" selImage:@"tabBar_me_click_icon"];
     
     // 自定义tabBar
     [self setValue:[[JHTabBar alloc] init] forKeyPath:@"tabBar"];

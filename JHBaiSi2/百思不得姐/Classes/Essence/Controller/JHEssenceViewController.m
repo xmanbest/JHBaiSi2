@@ -46,8 +46,15 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // 默认头部选择第一个按钮
-    [self headBtnClick:self.headView.subviews[0]];
+    
+    // 用来记录此画面第几次进入
+    static NSUInteger JHViewDidAppearTimes = 0;
+    JHViewDidAppearTimes ++;
+    // 只有首次进入此画面才会默认选中头部第一个按钮
+    if (JHViewDidAppearTimes == 1) {
+        // 默认头部选择第一个按钮
+        [self headBtnClick:self.headView.subviews[0]];
+    }
 }
 /**
  *  基本设置

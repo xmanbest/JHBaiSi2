@@ -11,9 +11,23 @@
 @implementation JHNavigationController
 + (void)initialize {
     [super initialize];
-    
+    // 全局设置UINavigationBar
     UINavigationBar *bar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[self.class]];
     [bar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+    [bar setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20]}];
+    
+    // 全局设置
+    UIBarButtonItem *barItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[self.class]];
+    
+    NSMutableDictionary *attrDicNormal = [NSMutableDictionary dictionary];
+    attrDicNormal[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+    attrDicNormal[NSForegroundColorAttributeName] = [UIColor blackColor];
+    [barItem setTitleTextAttributes:attrDicNormal forState:UIControlStateNormal];
+    
+    NSMutableDictionary *attrDicDisabled = [NSMutableDictionary dictionary];
+    attrDicDisabled[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+    attrDicDisabled[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+    [barItem setTitleTextAttributes:attrDicDisabled forState:UIControlStateDisabled];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

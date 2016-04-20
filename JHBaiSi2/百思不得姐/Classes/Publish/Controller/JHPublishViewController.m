@@ -9,6 +9,8 @@
 #import "JHPublishViewController.h"
 #import "JHVerticalButton.h"
 #import <pop/POP.h>
+#import "JHPostWordViewController.h"
+#import "JHNavigationController.h"
 
 static CGFloat const JHSpringFactor = 15;
 static CGFloat const JHAnimateDelayFactor = 0.1;
@@ -95,10 +97,12 @@ static CGFloat const JHAnimateDelayFactor = 0.1;
                 JHLog(@"点击了\"发图片\"按钮");
             }];
             break;
-        case 3:
+        case 3: // 发段子
             [self backWithCompletionBlock:^{
                 // 此按钮在当前模态视图收起后执行的行为
-                JHLog(@"点击了\"发段子\"按钮");
+                JHPostWordViewController *postWordC = [[JHPostWordViewController alloc] init];
+                JHNavigationController *naviC = [[JHNavigationController alloc] initWithRootViewController:postWordC];
+                [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:naviC animated:YES completion:nil];
             }];
             break;
         case 4:

@@ -56,8 +56,11 @@
 		51A91CB01CC5DA680073273A /* JHImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CAF1CC5DA680073273A /* JHImageButton.m */; };
 		51A91CB31CC684810073273A /* JHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CB21CC684810073273A /* JHWebViewController.m */; };
 		51A91CB51CC684F60073273A /* JHWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91CB41CC684F60073273A /* JHWebViewController.xib */; };
-		51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */; };
-		51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */; };
+		51A91CBD1CC6E12F0073273A /* JHPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CB91CC6E12F0073273A /* JHPublishViewController.m */; };
+		51A91CBE1CC6E12F0073273A /* JHPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91CBA1CC6E12F0073273A /* JHPublishViewController.xib */; };
+		51A91CC21CC6E8D40073273A /* JHPostWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CC01CC6E8D40073273A /* JHPostWordViewController.m */; };
+		51A91CC61CC718430073273A /* JHPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CC51CC718430073273A /* JHPlaceholderTextView.m */; };
+		51A91CC91CC733170073273A /* JHLabelPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CC81CC733170073273A /* JHLabelPlaceholderTextView.m */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
 		51EECFE41CB52B7600677631 /* JHTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE31CB52B7600677631 /* JHTopicViewController.m */; };
 		51EECFE81CB5FD7B00677631 /* JHTopicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE71CB5FD7B00677631 /* JHTopicImage.m */; };
@@ -175,9 +178,15 @@
 		51A91CB11CC684810073273A /* JHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHWebViewController.h; sourceTree = "<group>"; };
 		51A91CB21CC684810073273A /* JHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHWebViewController.m; sourceTree = "<group>"; };
 		51A91CB41CC684F60073273A /* JHWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHWebViewController.xib; sourceTree = "<group>"; };
-		51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
-		51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
-		51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
+		51A91CB81CC6E12F0073273A /* JHPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPublishViewController.h; sourceTree = "<group>"; };
+		51A91CB91CC6E12F0073273A /* JHPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPublishViewController.m; sourceTree = "<group>"; };
+		51A91CBA1CC6E12F0073273A /* JHPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHPublishViewController.xib; sourceTree = "<group>"; };
+		51A91CBF1CC6E8D40073273A /* JHPostWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPostWordViewController.h; sourceTree = "<group>"; };
+		51A91CC01CC6E8D40073273A /* JHPostWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPostWordViewController.m; sourceTree = "<group>"; };
+		51A91CC41CC718430073273A /* JHPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPlaceholderTextView.h; sourceTree = "<group>"; };
+		51A91CC51CC718430073273A /* JHPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPlaceholderTextView.m; sourceTree = "<group>"; };
+		51A91CC71CC733170073273A /* JHLabelPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLabelPlaceholderTextView.h; sourceTree = "<group>"; };
+		51A91CC81CC733170073273A /* JHLabelPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLabelPlaceholderTextView.m; sourceTree = "<group>"; };
 		51EECFDF1CB4ABF100677631 /* NSDate+JHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JHExtension.h"; sourceTree = "<group>"; };
 		51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JHExtension.m"; sourceTree = "<group>"; };
 		51EECFE21CB52B7600677631 /* JHTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicViewController.h; sourceTree = "<group>"; };
@@ -290,6 +299,7 @@
 		5137516B1CA4263200902C97 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				51A91CB61CC6E12F0073273A /* Publish */,
 				5137516C1CA4263200902C97 /* Essence */,
 				5137517E1CA4263200902C97 /* New */,
 				513751721CA4263200902C97 /* FriendTrends */,
@@ -554,9 +564,6 @@
 				5137518E1CA4263200902C97 /* JHTabBarController.m */,
 				5137519F1CA4EB5700902C97 /* JHNavigationController.h */,
 				513751A01CA4EB5700902C97 /* JHNavigationController.m */,
-				51CD89941CBCAD7900F6F73E /* JHPublishViewController.h */,
-				51CD89951CBCAD7900F6F73E /* JHPublishViewController.m */,
-				51CD89961CBCAD7900F6F73E /* JHPublishViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -580,6 +587,46 @@
 				51EECFF21CBB3F0000677631 /* JHProgressView.m */,
 				51A91C931CC3E1610073273A /* JHStatusWindow.h */,
 				51A91C941CC3E1610073273A /* JHStatusWindow.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		51A91CB61CC6E12F0073273A /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				51A91CB71CC6E12F0073273A /* Controller */,
+				51A91CBB1CC6E12F0073273A /* Model */,
+				51A91CBC1CC6E12F0073273A /* View */,
+			);
+			path = Publish;
+			sourceTree = "<group>";
+		};
+		51A91CB71CC6E12F0073273A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				51A91CB81CC6E12F0073273A /* JHPublishViewController.h */,
+				51A91CB91CC6E12F0073273A /* JHPublishViewController.m */,
+				51A91CBA1CC6E12F0073273A /* JHPublishViewController.xib */,
+				51A91CBF1CC6E8D40073273A /* JHPostWordViewController.h */,
+				51A91CC01CC6E8D40073273A /* JHPostWordViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		51A91CBB1CC6E12F0073273A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		51A91CBC1CC6E12F0073273A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				51A91CC41CC718430073273A /* JHPlaceholderTextView.h */,
+				51A91CC51CC718430073273A /* JHPlaceholderTextView.m */,
+				51A91CC71CC733170073273A /* JHLabelPlaceholderTextView.h */,
+				51A91CC81CC733170073273A /* JHLabelPlaceholderTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -678,7 +725,6 @@
 				51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */,
 				513751481CA37A0A00902C97 /* Assets.xcassets in Resources */,
 				51A91CB51CC684F60073273A /* JHWebViewController.xib in Resources */,
-				51CD89981CBCAD7900F6F73E /* JHPublishViewController.xib in Resources */,
 				513751B21CA6472C00902C97 /* JHRecommendCategoryTableViewCell.xib in Resources */,
 				51A91C921CC296830073273A /* JHTopicCommentCell.xib in Resources */,
 				5102BD681CB39A9B0078D26B /* JHTopicCell.xib in Resources */,
@@ -692,6 +738,7 @@
 				51F194631CAAA71300B254EF /* JHRecommendTagCell.xib in Resources */,
 				51EECFF01CB640B700677631 /* JHTopicPictureView.xib in Resources */,
 				51EECFF81CBB5B2B00677631 /* JHShowBigPicViewController.xib in Resources */,
+				51A91CBE1CC6E12F0073273A /* JHPublishViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +813,7 @@
 				5137519C1CA4263200902C97 /* JHTabBarController.m in Sources */,
 				51A91CA41CC5BC040073273A /* JHMeButtonCell.m in Sources */,
 				51A91CB01CC5DA680073273A /* JHImageButton.m in Sources */,
+				51A91CBD1CC6E12F0073273A /* JHPublishViewController.m in Sources */,
 				513751951CA4263200902C97 /* JHEssenceViewController.m in Sources */,
 				5102BD671CB39A9B0078D26B /* JHTopicCell.m in Sources */,
 				51F2B9121CAE3BA40096A3E0 /* JHAudioTableViewController.m in Sources */,
@@ -786,7 +834,6 @@
 				51EECFE81CB5FD7B00677631 /* JHTopicImage.m in Sources */,
 				513751971CA4263200902C97 /* JHMeViewController.m in Sources */,
 				51A91C781CBE25360073273A /* JHTopicAudio.m in Sources */,
-				51CD89971CBCAD7900F6F73E /* JHPublishViewController.m in Sources */,
 				512D787B1CAA76690032CE49 /* JHRecommendTagViewController.m in Sources */,
 				51F2B8F71CABAEDC0096A3E0 /* JHLoginRegisterViewController.m in Sources */,
 				51F2B90F1CAE3B6A0096A3E0 /* JHWordTableViewController.m in Sources */,
@@ -794,10 +841,13 @@
 				512D78721CA8D0310032CE49 /* JHRecommendUser.m in Sources */,
 				51F194621CAAA71300B254EF /* JHRecommendTagCell.m in Sources */,
 				51F2B91B1CAFA3830096A3E0 /* JHTopicUser.m in Sources */,
+				51A91CC91CC733170073273A /* JHLabelPlaceholderTextView.m in Sources */,
+				51A91CC21CC6E8D40073273A /* JHPostWordViewController.m in Sources */,
 				5137519A1CA4263200902C97 /* UIBarButtonItem+JHExtention.m in Sources */,
 				513751B11CA6472C00902C97 /* JHRecommendCategoryTableViewCell.m in Sources */,
 				51EECFE41CB52B7600677631 /* JHTopicViewController.m in Sources */,
 				51A91C801CBF0DAE0073273A /* JHTopicVideoView.m in Sources */,
+				51A91CC61CC718430073273A /* JHPlaceholderTextView.m in Sources */,
 				513751981CA4263200902C97 /* JHNewViewController.m in Sources */,
 				51F2B9011CAD22690096A3E0 /* JHOneTimeLaunchView.m in Sources */,
 				513751991CA4263200902C97 /* AppDelegate.m in Sources */,

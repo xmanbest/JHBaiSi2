@@ -50,6 +50,7 @@
     // 点击打开对应网页
     JHWebViewController *webVC = [[JHWebViewController alloc] init];
     webVC.url = btn.meSquare.url;
+    webVC.navigationItem.title = btn.meSquare.name;
     
     UITabBarController *tabBarC = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController *naviC = (UINavigationController *)tabBarC.selectedViewController;

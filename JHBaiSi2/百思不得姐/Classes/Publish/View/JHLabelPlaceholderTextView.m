@@ -56,13 +56,6 @@
     self.placeholderLabel.hidden = [self hasText];
 }
 
-///**
-// *  刷新占位符label的frame
-// */
-//- (void)updatePlaceholderLabelFrame {
-//    self.placeholderLabel.height = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.placeholderLabel.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.font} context:nil].size.height;
-//}
-
 #pragma mark - SetMethods
 - (void)setPlaceholder:(NSString *)placeholder {
     _placeholder = placeholder;

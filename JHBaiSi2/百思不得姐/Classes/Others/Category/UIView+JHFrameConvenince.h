@@ -22,4 +22,9 @@
  *  判断是否正在被主窗口范围显示
  */
 @property(nonatomic, assign, readonly, getter=isShowingInKeyWindow)BOOL showingInKeyWindow;
+
+/**
+ *  从xib中加载视图
+ */
++ (instancetype)loadViewFromXib;
 @end

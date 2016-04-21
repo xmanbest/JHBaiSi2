@@ -61,6 +61,10 @@
 		51A91CC21CC6E8D40073273A /* JHPostWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CC01CC6E8D40073273A /* JHPostWordViewController.m */; };
 		51A91CC61CC718430073273A /* JHPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CC51CC718430073273A /* JHPlaceholderTextView.m */; };
 		51A91CC91CC733170073273A /* JHLabelPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CC81CC733170073273A /* JHLabelPlaceholderTextView.m */; };
+		51A91CCC1CC849800073273A /* JHAddTagToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91CCB1CC849800073273A /* JHAddTagToolBar.m */; };
+		51A91CCE1CC849900073273A /* JHAddTagToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91CCD1CC849900073273A /* JHAddTagToolBar.xib */; };
+		51A91D1D1CC8E01F0073273A /* JHAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91D1C1CC8E01F0073273A /* JHAddTagViewController.m */; };
+		51A91D201CC95A820073273A /* JHTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91D1F1CC95A820073273A /* JHTagButton.m */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
 		51EECFE41CB52B7600677631 /* JHTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE31CB52B7600677631 /* JHTopicViewController.m */; };
 		51EECFE81CB5FD7B00677631 /* JHTopicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE71CB5FD7B00677631 /* JHTopicImage.m */; };
@@ -187,6 +191,13 @@
 		51A91CC51CC718430073273A /* JHPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHPlaceholderTextView.m; sourceTree = "<group>"; };
 		51A91CC71CC733170073273A /* JHLabelPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLabelPlaceholderTextView.h; sourceTree = "<group>"; };
 		51A91CC81CC733170073273A /* JHLabelPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLabelPlaceholderTextView.m; sourceTree = "<group>"; };
+		51A91CCA1CC849800073273A /* JHAddTagToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAddTagToolBar.h; sourceTree = "<group>"; };
+		51A91CCB1CC849800073273A /* JHAddTagToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAddTagToolBar.m; sourceTree = "<group>"; };
+		51A91CCD1CC849900073273A /* JHAddTagToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHAddTagToolBar.xib; sourceTree = "<group>"; };
+		51A91D1B1CC8E01F0073273A /* JHAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAddTagViewController.h; sourceTree = "<group>"; };
+		51A91D1C1CC8E01F0073273A /* JHAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAddTagViewController.m; sourceTree = "<group>"; };
+		51A91D1E1CC95A820073273A /* JHTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTagButton.h; sourceTree = "<group>"; };
+		51A91D1F1CC95A820073273A /* JHTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTagButton.m; sourceTree = "<group>"; };
 		51EECFDF1CB4ABF100677631 /* NSDate+JHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JHExtension.h"; sourceTree = "<group>"; };
 		51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JHExtension.m"; sourceTree = "<group>"; };
 		51EECFE21CB52B7600677631 /* JHTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicViewController.h; sourceTree = "<group>"; };
@@ -609,6 +620,8 @@
 				51A91CBA1CC6E12F0073273A /* JHPublishViewController.xib */,
 				51A91CBF1CC6E8D40073273A /* JHPostWordViewController.h */,
 				51A91CC01CC6E8D40073273A /* JHPostWordViewController.m */,
+				51A91D1B1CC8E01F0073273A /* JHAddTagViewController.h */,
+				51A91D1C1CC8E01F0073273A /* JHAddTagViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -627,6 +640,11 @@
 				51A91CC51CC718430073273A /* JHPlaceholderTextView.m */,
 				51A91CC71CC733170073273A /* JHLabelPlaceholderTextView.h */,
 				51A91CC81CC733170073273A /* JHLabelPlaceholderTextView.m */,
+				51A91CCA1CC849800073273A /* JHAddTagToolBar.h */,
+				51A91CCB1CC849800073273A /* JHAddTagToolBar.m */,
+				51A91CCD1CC849900073273A /* JHAddTagToolBar.xib */,
+				51A91D1E1CC95A820073273A /* JHTagButton.h */,
+				51A91D1F1CC95A820073273A /* JHTagButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -722,6 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				512D78771CA8D0E80032CE49 /* JHRecommedUserCell.xib in Resources */,
+				51A91CCE1CC849900073273A /* JHAddTagToolBar.xib in Resources */,
 				51A91C821CBF0DC80073273A /* JHTopicVideoView.xib in Resources */,
 				513751481CA37A0A00902C97 /* Assets.xcassets in Resources */,
 				51A91CB51CC684F60073273A /* JHWebViewController.xib in Resources */,
@@ -811,10 +830,12 @@
 				51A91C9B1CC4E4160073273A /* UIImage+JHExtension.m in Sources */,
 				51A91CA11CC5BBF00073273A /* JHMeSimpleCell.m in Sources */,
 				5137519C1CA4263200902C97 /* JHTabBarController.m in Sources */,
+				51A91CCC1CC849800073273A /* JHAddTagToolBar.m in Sources */,
 				51A91CA41CC5BC040073273A /* JHMeButtonCell.m in Sources */,
 				51A91CB01CC5DA680073273A /* JHImageButton.m in Sources */,
 				51A91CBD1CC6E12F0073273A /* JHPublishViewController.m in Sources */,
 				513751951CA4263200902C97 /* JHEssenceViewController.m in Sources */,
+				51A91D201CC95A820073273A /* JHTagButton.m in Sources */,
 				5102BD671CB39A9B0078D26B /* JHTopicCell.m in Sources */,
 				51F2B9121CAE3BA40096A3E0 /* JHAudioTableViewController.m in Sources */,
 				51A91CA71CC5BDE00073273A /* JHMeImageButtonCell.m in Sources */,
@@ -837,6 +858,7 @@
 				512D787B1CAA76690032CE49 /* JHRecommendTagViewController.m in Sources */,
 				51F2B8F71CABAEDC0096A3E0 /* JHLoginRegisterViewController.m in Sources */,
 				51F2B90F1CAE3B6A0096A3E0 /* JHWordTableViewController.m in Sources */,
+				51A91D1D1CC8E01F0073273A /* JHAddTagViewController.m in Sources */,
 				51A91C911CC296830073273A /* JHTopicCommentCell.m in Sources */,
 				512D78721CA8D0310032CE49 /* JHRecommendUser.m in Sources */,
 				51F194621CAAA71300B254EF /* JHRecommendTagCell.m in Sources */,

@@ -23,3 +23,6 @@ UIKIT_EXTERN NSString * const JHTabBarDidSelectNotification;
 UIKIT_EXTERN CGFloat const JHMeImageButtonH;
 // JHMeImageButtonCell中按钮的列数
 UIKIT_EXTERN CGFloat const JHMeImageButtonMaxCol;
+
+// 标签间距
+UIKIT_EXTERN CGFloat const JHTagMargin;

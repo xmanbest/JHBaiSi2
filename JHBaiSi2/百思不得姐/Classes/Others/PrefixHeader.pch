@@ -38,6 +38,9 @@
 #define JHScreenW [UIScreen mainScreen].bounds.size.width
 #define JHScreenH [UIScreen mainScreen].bounds.size.height
 
+// 标签背景色
+#define JHTagBackColore JHRGBColore(74, 139, 209)
+
 // 打印方法信息
 #define JHLogFun JHLog(@"%s", __func__)
 

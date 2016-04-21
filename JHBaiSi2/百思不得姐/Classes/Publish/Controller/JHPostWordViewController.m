@@ -9,9 +9,12 @@
 #import "JHPostWordViewController.h"
 #import "JHPlaceholderTextView.h"
 #import "JHLabelPlaceholderTextView.h"
+#import "JHAddTagToolBar.h"
+#import "JHAddTagViewController.h"
 
 @interface JHPostWordViewController () <UITextViewDelegate>
 @property(nonatomic, weak)JHLabelPlaceholderTextView *textView;
+@property(nonatomic, weak)JHAddTagToolBar *toolBar;
 @end
 
 @implementation JHPostWordViewController
@@ -25,7 +28,49 @@
     [self setupNavi];
     // textView设置
     [self setupTextView];
+    // ToolBar设置
+    [self setupToolBar];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // 自动弹出键盘
+    [self.textView becomeFirstResponder];
+}
+
+/**
+ *  ToolBar设置
+ */
+- (void)setupToolBar {
+    // 添加toolBar
+    JHAddTagToolBar *toolBar = [JHAddTagToolBar loadViewFromXib];
+    toolBar.y = self.view.height - toolBar.height;
+    toolBar.width = self.view.width;
+    [self.view addSubview:toolBar];
+    self.toolBar = toolBar;
+    // toolBar实现addTag按钮点击回调block
+    toolBar.addTagBtnDidClickCallbackBlock = ^(JHAddTagToolBar *addTagToolBar, UIButton *addTagBtn) {
+        // push 到 添加标签页面
+        JHAddTagViewController *addTagVC = [[JHAddTagViewController alloc] init];
+        [self.navigationController pushViewController:addTagVC animated:YES];
+    };
+    
+    // 注册键盘frame改变通知 观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChangeHandle:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+/**
+ *  键盘frame改变通知 处理
+ */
+- (void)keyboardFrameWillChangeHandle:(NSNotification *)noti {
+    // UIKeyboardFrameEndUserInfoKey  UIKeyboardAnimationDurationUserInfoKey
+    CGRect keyboardFrame = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat duration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.toolBar.transform = CGAffineTransformMakeTranslation(0, -(JHScreenH - keyboardFrame.origin.y));
+    }];
 }
 
 /**
@@ -63,6 +108,7 @@
     textView.placeholder = @"把好玩的图片，好笑的段子或糗事发到这里，接受千万网友膜拜吧！发布违反国家法律内容的，我们将依法提交给有关部门处理。";
 }
 
+
 #pragma mark - EventHandlers
 /**
  *  导航栏取消按钮点击处理
@@ -76,6 +122,12 @@
  */
 - (void)postClick {
     
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    //  退出键盘
+    [self.view endEditing:YES];
 }
 
 #pragma mark - UITextViewDelegate

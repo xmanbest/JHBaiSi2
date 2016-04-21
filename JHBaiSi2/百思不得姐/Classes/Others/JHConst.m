@@ -28,3 +28,6 @@ NSString * const JHTabBarDidSelectNotification = @"JHTabBarDidSelectNotification
 CGFloat const JHMeImageButtonH = JHTopicMargin + 44 + 30;
 // JHMeImageButtonCell中按钮的列数
 CGFloat const JHMeImageButtonMaxCol = 4;
+
+// 标签间距
+CGFloat const JHTagMargin = 5;

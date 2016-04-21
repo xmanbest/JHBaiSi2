@@ -104,4 +104,11 @@
     
     return isScrollView && isVisible && isInKeyWindow;
 }
+
+/**
+ *  从xib中加载视图
+ */
++ (instancetype)loadViewFromXib {
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+}
 @end

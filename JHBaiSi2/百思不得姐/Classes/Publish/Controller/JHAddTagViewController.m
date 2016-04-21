@@ -9,7 +9,7 @@
 #import "JHAddTagViewController.h"
 #import "JHTagButton.h"
 
-@interface JHAddTagViewController ()
+@interface JHAddTagViewController () <UITextFieldDelegate>
 /**
  *  内容容器
  */
@@ -85,11 +85,9 @@
  */
 - (void)setupTextField {
     UITextField *textField = [[UITextField alloc] init];
+    textField.delegate = self;
 //    textField.placeholder = @"多个标签用逗号或者换行隔开";
     [textField sizeToFit];
-//    textField.height = 35;
-//    textField.width = JHScreenW;
-//    textField.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:textField];
     self.textField = textField;
     
@@ -151,9 +149,21 @@
  *  textField编辑通知 处理
  */
 - (void)textFieldTextDidChangeHandle:(NSNotification *)noti {
+    NSString *fieldText = self.textField.text;
+    NSString *text = [NSString stringWithFormat:@"添加标签：%@", fieldText];
+    // 最后输入的文字
+    NSUInteger len = fieldText.length;
+    NSString *lastChar = [fieldText substringFromIndex:len-1];
+    if (([lastChar isEqualToString:@","] || [lastChar isEqualToString:@"，"]) && len > 1) {
+        // 当最后一个文字为逗号时，去掉逗号直接添加标签
+        self.textField.text = [fieldText substringToIndex:len-1];
+        [self addTagConfirmBtnClick];
+        return;
+    }
+    
     // 同步按钮和textField的内容
-    NSString *text = [NSString stringWithFormat:@"添加标签：%@", self.textField.text];
     [self.addTagConfirmBtn setTitle:text forState:UIControlStateNormal];
+    
     // 根据标签内容输入框是否有内容判断确定添加按钮的可见度
     self.addTagConfirmBtn.hidden = !self.textField.hasText;
     
@@ -242,5 +252,15 @@
     self.addTagConfirmBtn.x = 0;
     self.addTagConfirmBtn.y = CGRectGetMaxY(self.textField.frame) + JHTagMargin;
 
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // 点击return键的时候，直接添加标签
+    if (self.textField.text.length) {
+        [self addTagConfirmBtnClick];
+    }
+    
+    return YES;
 }
 @end

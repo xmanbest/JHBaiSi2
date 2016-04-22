@@ -31,3 +31,5 @@ CGFloat const JHMeImageButtonMaxCol = 4;
 
 // 标签间距
 CGFloat const JHTagMargin = 5;
+// 标签高度
+CGFloat const JHTagHeight = 25;

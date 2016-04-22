@@ -224,6 +224,7 @@
     [tag setTitle:self.textField.text forState:UIControlStateNormal];
     tag.backgroundColor = JHTagBackColore;
     [tag sizeToFit];
+    tag.height = JHTagHeight;
     [tag addTarget:self action:@selector(deleteTagBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:tag];
     [self.tags addObject:tag];

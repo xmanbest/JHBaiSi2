@@ -48,10 +48,8 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bC0-zX-UZe" userLabel="上面">
                     <rect key="frame" x="0.0" y="0.0" width="346" height="83"/>
-                    <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bC0-zX-UZe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4bt-SZ-3oW"/>
                 <constraint firstItem="bC0-zX-UZe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4nS-O7-RDu"/>

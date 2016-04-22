@@ -26,3 +26,5 @@ UIKIT_EXTERN CGFloat const JHMeImageButtonMaxCol;
 
 // 标签间距
 UIKIT_EXTERN CGFloat const JHTagMargin;
+// 标签高度
+UIKIT_EXTERN CGFloat const JHTagHeight;

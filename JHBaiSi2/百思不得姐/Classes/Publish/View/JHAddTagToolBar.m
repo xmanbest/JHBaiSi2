@@ -31,6 +31,9 @@
     [addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.tagsView addSubview:addBtn];
     self.addBtn = addBtn;
+    
+    // 添加初始标签
+    [self showTagsWithTitles:@[@"吐槽", @"糗事"]];
 }
 
 - (NSMutableArray<UILabel *> *)tagLbls {
@@ -71,10 +74,11 @@
         tagLab.textColor = [UIColor whiteColor];
         [tagLab sizeToFit];
         tagLab.width += 2 * JHTagMargin;
+        tagLab.height = JHTagHeight;
         [self.tagsView addSubview:tagLab];
         [self.tagLbls addObject:tagLab];
     
-        // 标签排列Frame
+        // 1标签排列Frame
         if (index == 0) { // 第一个标签
             tagLab.x = 0;
             tagLab.y = 0;
@@ -92,10 +96,9 @@
                 tagLab.y = CGRectGetMaxY(preLbl.frame) + JHTagMargin;
             }
         }
-    
     }
     
-    // 添加标签按钮更新Frame
+    // 2添加标签按钮更新Frame
     CGFloat rightSpace = self.tagsView.width - CGRectGetMaxX([self.tagLbls lastObject].frame) - JHTagMargin;
     if (rightSpace >= self.addBtn.width) { // 足够放置
         // 同行
@@ -106,6 +109,10 @@
         self.addBtn.y = CGRectGetMaxY([self.tagLbls lastObject].frame) + JHTagMargin;
     }
 
+    // 3重新设置toolBar的frame
+    CGFloat oldHeight = self.height;
+    self.height = CGRectGetMaxY(self.addBtn.frame) + 35 + JHTopicMargin;
+    self.y += oldHeight - self.height;
 }
 
 @end

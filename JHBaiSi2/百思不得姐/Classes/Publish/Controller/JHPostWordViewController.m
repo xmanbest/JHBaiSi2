@@ -50,9 +50,16 @@
     [self.view addSubview:toolBar];
     self.toolBar = toolBar;
     // toolBar实现addTag按钮点击回调block
-    toolBar.addTagBtnDidClickCallbackBlock = ^(JHAddTagToolBar *addTagToolBar, UIButton *addTagBtn) {
+    toolBar.addTagBtnDidClickCallbackBlock = ^(UIButton *addTagBtn, NSArray<NSString *> *showingTitles) {
         // push 到 添加标签页面
         JHAddTagViewController *addTagVC = [[JHAddTagViewController alloc] init];
+        // 传递正在显示的标题集合
+        addTagVC.showingTitles = showingTitles;
+        // 实现完成回调
+        [addTagVC setTagsWillAcommplishCallbackBlock:^(NSArray<NSString *> *tagTitles) {
+            // 显示并排列标签
+            [self.toolBar showTagsWithTitles:tagTitles];
+        }];
         [self.navigationController pushViewController:addTagVC animated:YES];
     };
     

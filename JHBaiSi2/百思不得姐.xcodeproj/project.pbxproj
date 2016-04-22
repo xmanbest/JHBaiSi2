@@ -65,6 +65,7 @@
 		51A91CCE1CC849900073273A /* JHAddTagToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A91CCD1CC849900073273A /* JHAddTagToolBar.xib */; };
 		51A91D1D1CC8E01F0073273A /* JHAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91D1C1CC8E01F0073273A /* JHAddTagViewController.m */; };
 		51A91D201CC95A820073273A /* JHTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91D1F1CC95A820073273A /* JHTagButton.m */; };
+		51A91D231CC9B6BD0073273A /* JHTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91D221CC9B6BD0073273A /* JHTagTextField.m */; };
 		51EECFE11CB4ABF100677631 /* NSDate+JHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */; };
 		51EECFE41CB52B7600677631 /* JHTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE31CB52B7600677631 /* JHTopicViewController.m */; };
 		51EECFE81CB5FD7B00677631 /* JHTopicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EECFE71CB5FD7B00677631 /* JHTopicImage.m */; };
@@ -198,6 +199,8 @@
 		51A91D1C1CC8E01F0073273A /* JHAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAddTagViewController.m; sourceTree = "<group>"; };
 		51A91D1E1CC95A820073273A /* JHTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTagButton.h; sourceTree = "<group>"; };
 		51A91D1F1CC95A820073273A /* JHTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTagButton.m; sourceTree = "<group>"; };
+		51A91D211CC9B6BD0073273A /* JHTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTagTextField.h; sourceTree = "<group>"; };
+		51A91D221CC9B6BD0073273A /* JHTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTagTextField.m; sourceTree = "<group>"; };
 		51EECFDF1CB4ABF100677631 /* NSDate+JHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JHExtension.h"; sourceTree = "<group>"; };
 		51EECFE01CB4ABF100677631 /* NSDate+JHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JHExtension.m"; sourceTree = "<group>"; };
 		51EECFE21CB52B7600677631 /* JHTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHTopicViewController.h; sourceTree = "<group>"; };
@@ -645,6 +648,8 @@
 				51A91CCD1CC849900073273A /* JHAddTagToolBar.xib */,
 				51A91D1E1CC95A820073273A /* JHTagButton.h */,
 				51A91D1F1CC95A820073273A /* JHTagButton.m */,
+				51A91D211CC9B6BD0073273A /* JHTagTextField.h */,
+				51A91D221CC9B6BD0073273A /* JHTagTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -850,6 +855,7 @@
 				51EECFEB1CB5FE0100677631 /* JHTopicGif.m in Sources */,
 				513751A61CA55C2200902C97 /* JHRecommendViewController.m in Sources */,
 				51F2B9091CAE3B160096A3E0 /* JHVideoTableViewController.m in Sources */,
+				51A91D231CC9B6BD0073273A /* JHTagTextField.m in Sources */,
 				51F2B9061CAE3AE70096A3E0 /* JHAllTableViewController.m in Sources */,
 				51EECFF61CBB5B1200677631 /* JHShowBigPicViewController.m in Sources */,
 				51EECFE81CB5FD7B00677631 /* JHTopicImage.m in Sources */,

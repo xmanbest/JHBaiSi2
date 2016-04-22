@@ -29,9 +29,9 @@
     [tbi setTitleTextAttributes:selAttr forState:UIControlStateSelected];
     
     // 设置等待菊花统一样式
-    [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeGradient];
     [[SVProgressHUD appearance] setDefaultStyle:SVProgressHUDStyleDark];
-    [[SVProgressHUD appearance] setMinimumDismissTimeInterval:2];
+    [[SVProgressHUD appearance] setMinimumDismissTimeInterval:3];
 }
 
 - (void)viewDidLoad {

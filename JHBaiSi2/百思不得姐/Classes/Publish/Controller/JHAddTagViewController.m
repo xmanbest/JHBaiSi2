@@ -8,6 +8,8 @@
 
 #import "JHAddTagViewController.h"
 #import "JHTagButton.h"
+#import "JHTagTextField.h"
+#import <SVProgressHUD.h>
 
 @interface JHAddTagViewController () <UITextFieldDelegate>
 /**
@@ -41,6 +43,8 @@
     [self setupContentView];
     // textField设置
     [self setupTextField];
+    // 同步前一个页面正在显示的标签到当前页面
+    [self setupShowingTags];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -81,11 +85,31 @@
 
 #pragma mark - PrivateMethods
 /**
+ *  同步前一个页面正在显示的标签到当前页面
+ */
+- (void)setupShowingTags {
+    for (NSString *showingTitle in self.showingTitles) {
+        // 添加前一个页面正显示的标签
+        self.textField.text = showingTitle;
+        [self addTagConfirmBtnClick];
+    }
+}
+
+/**
  *  textField设置
  */
 - (void)setupTextField {
-    UITextField *textField = [[UITextField alloc] init];
+    JHTagTextField *textField = [[JHTagTextField alloc] init];
     textField.delegate = self;
+    // 设置点击删除键回调block
+    __weak typeof(self) weakSelf = self;
+    textField.deleteWhenHasNoTextCallbackBlock = ^(){
+        // 点击删除键时，如果文本为空，则删除上一个标签
+        if (!weakSelf.textField.hasText) {
+            UIButton *lastTag = [weakSelf.tags lastObject];
+            [weakSelf deleteTagBtnClick:lastTag];
+        }
+    };
 //    textField.placeholder = @"多个标签用逗号或者换行隔开";
     [textField sizeToFit];
     [self.contentView addSubview:textField];
@@ -142,33 +166,44 @@
  *  导航栏完成按钮点击处理
  */
 - (void)accomplishClick {
-    
+    // 获取当前tags的标题集合
+    NSArray<NSString *> *tagTitles = [self.tags valueForKey:@"currentTitle"];
+    // 执行回调block
+    !self.tagsWillAcommplishCallbackBlock ?  : self.tagsWillAcommplishCallbackBlock(tagTitles);
+    // pop回前页面
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /**
  *  textField编辑通知 处理
  */
 - (void)textFieldTextDidChangeHandle:(NSNotification *)noti {
-    NSString *fieldText = self.textField.text;
-    NSString *text = [NSString stringWithFormat:@"添加标签：%@", fieldText];
-    // 最后输入的文字
-    NSUInteger len = fieldText.length;
-    NSString *lastChar = [fieldText substringFromIndex:len-1];
-    if (([lastChar isEqualToString:@","] || [lastChar isEqualToString:@"，"]) && len > 1) {
-        // 当最后一个文字为逗号时，去掉逗号直接添加标签
-        self.textField.text = [fieldText substringToIndex:len-1];
-        [self addTagConfirmBtnClick];
-        return;
-    }
+    // 排列标签，textField，添加标签按钮的frame
+    [self updateTagsFrame];
     
-    // 同步按钮和textField的内容
-    [self.addTagConfirmBtn setTitle:text forState:UIControlStateNormal];
+    // 当文本框还有文本时
+    if (self.textField.hasText) {
+        NSString *fieldText = self.textField.text;
+        // 最后输入的文字
+        NSUInteger len = fieldText.length;
+        NSString *lastChar = [fieldText substringFromIndex:len-1];
+        if (([lastChar isEqualToString:@","] || [lastChar isEqualToString:@"，"]) && len > 1) {
+            // 当最后一个文字为逗号时，去掉逗号直接添加标签
+            self.textField.text = [fieldText substringToIndex:len-1];
+            [self addTagConfirmBtnClick];
+            return;
+        }
+        
+        // 同步按钮和textField的内容
+        NSString *text = [NSString stringWithFormat:@"添加标签：%@", fieldText];
+        [self.addTagConfirmBtn setTitle:text forState:UIControlStateNormal];
+        
+    }
     
     // 根据标签内容输入框是否有内容判断确定添加按钮的可见度
     self.addTagConfirmBtn.hidden = !self.textField.hasText;
     
-    // 排列标签，textField，添加标签按钮的frame
-    [self updateTagsFrame];
+    
     
 }
 
@@ -176,13 +211,20 @@
  *  tag添加按钮点击处理
  */
 - (void)addTagConfirmBtnClick {
+    // 当前标签数不能超过5
+    if (self.tags.count >= 5) {
+        [SVProgressHUD showInfoWithStatus:@"标签数不能超过5个"];
+        [SVProgressHUD dismissWithDelay:3];
+        return;
+    }
+    
     // 添加标签
     JHTagButton *tag = [JHTagButton buttonWithType:UIButtonTypeCustom];
     [tag setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
     [tag setTitle:self.textField.text forState:UIControlStateNormal];
     tag.backgroundColor = JHTagBackColore;
     [tag sizeToFit];
-    [tag addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
+    [tag addTarget:self action:@selector(deleteTagBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:tag];
     [self.tags addObject:tag];
     
@@ -197,7 +239,7 @@
 /**
  *  标签点击处理
  */
-- (void)tagClick:(UIButton *)tag {
+- (void)deleteTagBtnClick:(UIButton *)tag {
     // 移除此标签
     [self.tags removeObject:tag];
     [tag removeFromSuperview];

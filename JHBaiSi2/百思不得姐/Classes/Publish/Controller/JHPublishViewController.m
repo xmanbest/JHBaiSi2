@@ -136,6 +136,7 @@ static CGFloat const JHAnimateDelayFactor = 0.1;
     CGFloat titleCenterX = JHScreenW * 0.5;
     CGFloat titleEndCenterY = JHScreenH * 0.2;
     CGFloat titleStartCenterY = titleEndCenterY - JHScreenH;
+    titleImageView.centerY = titleStartCenterY;
     
     // 设置动画效果
     POPSpringAnimation *titleAnimate = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];

@@ -30,6 +30,14 @@
     [barItem setTitleTextAttributes:attrDicDisabled forState:UIControlStateDisabled];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // 由于自定义了左侧返回按钮，导致向右拖动左侧边框pop出当前view的功能消失，
+    // 此处代码可以回复此功能
+    self.interactivePopGestureRecognizer.delegate = nil;
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     // 设置所有VC的导航栏返回键标题为“返回”, 下面的解决方案无法自定义按钮属性

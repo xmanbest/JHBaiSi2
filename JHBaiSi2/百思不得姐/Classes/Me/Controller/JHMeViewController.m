@@ -14,6 +14,7 @@
 #import "JHMeSimpleCell.h"
 #import "JHMeButtonCell.h"
 #import "JHMeImageButtonCell.h"
+#import "JHSettingViewController.h"
 
 static NSString * const JHMeSimpleCellID = @"JHMeSimpleCellID";
 static NSString * const JHMeButtonCellID = @"JHMeButtonCellID";
@@ -92,9 +93,9 @@ static NSString * const JHMeImageButtonCellID = @"JHMeImageButtonCellID";
 }
 
 - (void)settingClick:(UIButton *)btn {
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController pushViewController:vc animated:YES];
+    // 代开设置页面
+    JHSettingViewController *settingVc = [[JHSettingViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:settingVc animated:YES];
 
 }
 
